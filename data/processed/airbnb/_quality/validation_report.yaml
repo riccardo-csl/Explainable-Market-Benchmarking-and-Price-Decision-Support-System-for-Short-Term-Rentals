@@ -1,0 +1,59 @@
+validation_date: '2026-03-11'
+overall_status: passed
+dataset_results:
+- dataset_name: listing_snapshot
+  status: passed
+  row_count: 282047
+  checks_run:
+  - dataset_files_exist
+  - manifest_exists
+  - contract_columns_match
+  - non_nullable_fields
+  - primary_key_uniqueness
+  - dataset_semantics
+  findings: []
+- dataset_name: city_period_summary
+  status: passed
+  row_count: 17
+  checks_run:
+  - dataset_files_exist
+  - manifest_exists
+  - contract_columns_match
+  - non_nullable_fields
+  - primary_key_uniqueness
+  - dataset_semantics
+  findings: []
+- dataset_name: neighbourhood_period_summary
+  status: passed
+  row_count: 655
+  checks_run:
+  - dataset_files_exist
+  - manifest_exists
+  - contract_columns_match
+  - non_nullable_fields
+  - primary_key_uniqueness
+  - dataset_semantics
+  findings: []
+- dataset_name: neighbourhood_reference
+  status: passed
+  row_count: 252
+  checks_run:
+  - dataset_files_exist
+  - manifest_exists
+  - contract_columns_match
+  - non_nullable_fields
+  - primary_key_uniqueness
+  - dataset_semantics
+  findings: []
+- dataset_name: neighbourhood_boundary
+  status: passed
+  row_count: 710
+  checks_run:
+  - dataset_files_exist
+  - manifest_exists
+  - contract_columns_match
+  - non_nullable_fields
+  - primary_key_uniqueness
+  - dataset_semantics
+  findings: []
+findings: []

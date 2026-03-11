@@ -1,0 +1,15 @@
+dataset_name: neighbourhood_reference
+canonical_path: data/raw/airbnb/neighbourhood_reference.csv
+original_filename: airbnb_italy_city_neighbourhoods.csv
+source_category: reference_source
+file_format: csv
+encoding: utf-8
+size_bytes: 6805
+sha256: d7ce6649c489a85aa26d86ed4d5139c0ad7d6188d84e9fd1384e0bd07567b6bc
+import_date: '2026-03-11'
+steward: project_team
+immutable: true
+description: Reference mapping between neighbourhoods, neighbourhood groups, and cities.
+known_limitations:
+- Neighbourhood group values can be null and must be treated as optional reference
+  data.

@@ -1,0 +1,15 @@
+dataset_name: neighbourhood_boundary
+parquet_path: data/processed/airbnb/parquet/neighbourhood_boundary.parquet
+csv_path: data/processed/airbnb/csv/neighbourhood_boundary.csv
+row_count: 710
+columns:
+- boundary_id
+- city_name
+- neighbourhood_name
+- neighbourhood_group_name
+- geometry_type
+- geometry
+source_datasets:
+- neighbourhood_boundaries
+- neighbourhood_reference
+generation_date: '2026-03-11'

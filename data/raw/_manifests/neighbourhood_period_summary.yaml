@@ -1,0 +1,15 @@
+dataset_name: neighbourhood_period_summary
+canonical_path: data/raw/airbnb/neighbourhood_period_summary.csv
+original_filename: airbnb_italian_neighbourhood_grouped.csv
+source_category: project_derived_source
+file_format: csv
+encoding: utf-8
+size_bytes: 137392
+sha256: 430527fd08e390e8358ac338c711f4b811dd0a649702ce571720618f1b40ad52
+import_date: '2026-03-11'
+steward: project_team
+immutable: true
+description: Neighbourhood-period aggregate statistics used for local benchmark context.
+known_limitations:
+- This dataset is aggregated and should be treated as benchmark context, not as listing-level
+  evidence.

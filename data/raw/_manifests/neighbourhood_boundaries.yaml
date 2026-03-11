@@ -1,0 +1,17 @@
+dataset_name: neighbourhood_boundaries
+canonical_path: data/raw/airbnb/neighbourhood_boundaries.geojson
+original_filename: airbnb_italy_city_neighbourhoods_geojson.geojson
+source_category: spatial_source
+file_format: geojson
+encoding: utf-8
+size_bytes: 3928504
+sha256: c7ca51f774b57f7caca4857cc65a109b88a0139dc772371d0fdd1ad07bb9c103
+import_date: '2026-03-11'
+steward: project_team
+immutable: true
+description: GeoJSON neighbourhood boundaries used for mapping and spatial context.
+known_limitations:
+- The GeoJSON features do not expose a city property directly.
+- The boundary file contains multiple features for some logical neighbourhood entities.
+- Some neighbourhood names require encoding normalization to align cleanly with the
+  reference CSV.

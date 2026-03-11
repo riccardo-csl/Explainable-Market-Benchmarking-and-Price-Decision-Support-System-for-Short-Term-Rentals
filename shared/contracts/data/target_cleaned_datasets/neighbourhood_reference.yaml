@@ -1,0 +1,30 @@
+name: neighbourhood_reference
+description: Canonical reference mapping between cities, neighbourhoods, and neighbourhood
+  groups.
+grain: city_neighbourhood_reference_row
+primary_key:
+- city_name
+- neighbourhood_name
+source_datasets:
+- neighbourhood_reference
+fields:
+- name: city_name
+  data_type: string
+  nullable: false
+  description: Normalized city label.
+  source_columns:
+  - city
+- name: neighbourhood_name
+  data_type: string
+  nullable: false
+  description: Normalized neighbourhood label.
+  source_columns:
+  - neighbourhood
+- name: neighbourhood_group_name
+  data_type: string
+  nullable: true
+  description: Neighbourhood group label if available.
+  source_columns:
+  - neighbourhood_group
+notes:
+- Neighbourhood group values remain nullable because the source mapping includes nulls.

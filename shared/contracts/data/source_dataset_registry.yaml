@@ -1,0 +1,1711 @@
+source_datasets:
+- name: airbnb_listing_snapshots
+  relative_path: data/raw/airbnb/listing_snapshots.csv
+  original_filename: airbnb.csv
+  file_format: csv
+  grain: listing_snapshot_per_scrape_date
+  role: primary_listing_level_dataset
+  source_category: third_party_export
+  encoding: utf-8
+  steward: project_team
+  description: Listing-level Airbnb snapshot data with pricing, review metrics, location,
+    and seasonal scrape metadata.
+  immutable: true
+  candidate_keys:
+  - - Listings id
+    - Date of scraping
+  - - Listings id
+    - Season
+  city_columns:
+  - City
+  period_columns:
+  - Season
+  date_columns:
+  - Date of scraping
+  categorical_hints:
+  - Host is superhost
+  - Property type
+  - City
+  - Season
+  - Bathrooms type
+  known_limitations:
+  - Listing identifiers repeat across multiple scrape dates by design.
+  - The `Coordinates` column stores latitude and longitude as a combined string.
+  - The `Property type` field behaves as a room-type style category in the observed
+    source data.
+  observed_profile:
+    dataset_name: airbnb_listing_snapshots
+    relative_path: data/raw/airbnb/listing_snapshots.csv
+    format: csv
+    grain: listing_snapshot_per_scrape_date
+    row_count: 282047
+    geometry_types: []
+    fields:
+    - name: Listings id
+      inferred_type: integer
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '31840'
+      - '222527'
+      - '32120'
+      - '224562'
+      - '32180'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Last year reviews
+      inferred_type: integer
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '6'
+      - '0'
+      - '9'
+      - '11'
+      - '17'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Host since
+      inferred_type: date
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '2011-02-07'
+      - '2011-07-11'
+      - '2010-03-26'
+      - '2011-09-16'
+      - '2014-04-05'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Host is superhost
+      inferred_type: string
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - Host
+      - Superhost
+      likely_categorical: true
+      unique_values_observed: 2
+      unique_values_truncated: false
+    - name: Host number of listings
+      inferred_type: float
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '44.0'
+      - '3.0'
+      - '1.0'
+      - '2.0'
+      - '6.0'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Neighbourhood
+      inferred_type: string
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - Centro Storico
+      - Rifredi
+      - Gavinana Galluzzo
+      - Campo di Marte
+      - Isolotto Legnaia
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Beds number
+      inferred_type: float
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '1.0'
+      - '3.0'
+      - '4.0'
+      - '2.0'
+      - '6.0'
+      likely_categorical: false
+      unique_values_observed: 11
+      unique_values_truncated: false
+    - name: Bedrooms number
+      inferred_type: float
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '1.0'
+      - '2.0'
+      - '3.0'
+      - '4.0'
+      - '5.0'
+      likely_categorical: false
+      unique_values_observed: 11
+      unique_values_truncated: false
+    - name: Property type
+      inferred_type: string
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - Private room
+      - Entire home
+      - Hotel room
+      - Shared room
+      likely_categorical: true
+      unique_values_observed: 4
+      unique_values_truncated: false
+    - name: Maximum allowed guests
+      inferred_type: integer
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '2'
+      - '4'
+      - '1'
+      - '3'
+      - '10'
+      likely_categorical: false
+      unique_values_observed: 16
+      unique_values_truncated: false
+    - name: Price
+      inferred_type: float
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '89.0'
+      - '300.0'
+      - '95.0'
+      - '60.0'
+      - '105.0'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Total reviews
+      inferred_type: integer
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '128'
+      - '284'
+      - '26'
+      - '101'
+      - '34'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Rating score
+      inferred_type: float
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '4.65'
+      - '4.85'
+      - '4.88'
+      - '4.66'
+      - '4.76'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Accuracy score
+      inferred_type: float
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '4.73'
+      - '4.88'
+      - '4.75'
+      - '4.81'
+      - '5.0'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Cleanliness score
+      inferred_type: float
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '4.86'
+      - '4.88'
+      - '4.71'
+      - '4.84'
+      - '5.0'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Checkin score
+      inferred_type: float
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '4.85'
+      - '4.99'
+      - '4.84'
+      - '4.76'
+      - '4.81'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Communication score
+      inferred_type: float
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '4.91'
+      - '4.96'
+      - '4.83'
+      - '4.71'
+      - '4.98'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Location score
+      inferred_type: float
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '4.91'
+      - '4.6'
+      - '4.63'
+      - '4.93'
+      - '4.81'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Value for money score
+      inferred_type: float
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '4.7'
+      - '4.86'
+      - '4.63'
+      - '4.64'
+      - '4.84'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Reviews per month
+      inferred_type: float
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '0.78'
+      - '1.92'
+      - '0.16'
+      - '0.71'
+      - '0.21'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: City
+      inferred_type: string
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - Firenze
+      - Milano
+      - Napoli
+      - Roma
+      - Venezia
+      likely_categorical: true
+      unique_values_observed: 5
+      unique_values_truncated: false
+    - name: Season
+      inferred_type: string
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - Early Winter
+      - Early Spring
+      - Early Summer
+      - Early Autumn
+      likely_categorical: true
+      unique_values_observed: 4
+      unique_values_truncated: false
+    - name: Bathrooms number
+      inferred_type: integer
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '1'
+      - '2'
+      - '0'
+      - '4'
+      - '3'
+      likely_categorical: false
+      unique_values_observed: 11
+      unique_values_truncated: false
+    - name: Bathrooms type
+      inferred_type: string
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - private
+      - shared
+      likely_categorical: true
+      unique_values_observed: 2
+      unique_values_truncated: false
+    - name: Coordinates
+      inferred_type: string
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - 43.77709, 11.25216
+      - 43.82005, 11.22004
+      - 43.76157, 11.27741
+      - 43.772, 11.26142
+      - 43.76832, 11.24348
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: Date of scraping
+      inferred_type: date
+      nullable: false
+      non_empty_count: 282047
+      null_count: 0
+      sample_values:
+      - '2024-12-15'
+      - '2024-03-15'
+      - '2024-06-15'
+      - '2024-09-15'
+      likely_categorical: false
+      unique_values_observed: 4
+      unique_values_truncated: false
+    coverage:
+      cities:
+      - Firenze
+      - Milano
+      - Napoli
+      - Roma
+      - Venezia
+      periods:
+      - Early Autumn
+      - Early Spring
+      - Early Summer
+      - Early Winter
+      snapshot_dates:
+      - '2024-03-15'
+      - '2024-06-15'
+      - '2024-09-15'
+      - '2024-12-15'
+    candidate_keys:
+    - columns:
+      - Listings id
+      - Date of scraping
+      is_unique: true
+      duplicate_key_count: 0
+    - columns:
+      - Listings id
+      - Season
+      is_unique: true
+      duplicate_key_count: 0
+    notes:
+    - Listing identifiers repeat across multiple scrape dates by design.
+    - The `Coordinates` column stores latitude and longitude as a combined string.
+    - The `Property type` field behaves as a room-type style category in the observed
+      source data.
+- name: city_period_summary
+  relative_path: data/raw/airbnb/city_period_summary.csv
+  original_filename: airbnb_italian_city_grouped.csv
+  file_format: csv
+  grain: city_period_aggregate
+  role: city_level_benchmark_dataset
+  source_category: project_derived_source
+  encoding: utf-8
+  steward: project_team
+  description: City-period aggregate statistics derived from listing-level data. Intended
+    for city-level benchmarking and contextual market summaries.
+  immutable: true
+  candidate_keys:
+  - - place
+    - period
+  city_columns:
+  - place
+  period_columns:
+  - period
+  date_columns: []
+  categorical_hints:
+  - place
+  - period
+  - neighbourhood_mode
+  - room_type_mode
+  known_limitations:
+  - This dataset is aggregated and cannot be used for property-level modeling by itself.
+  - City and period labels use different header names than the listing-level source
+    dataset.
+  observed_profile:
+    dataset_name: city_period_summary
+    relative_path: data/raw/airbnb/city_period_summary.csv
+    format: csv
+    grain: city_period_aggregate
+    row_count: 17
+    geometry_types: []
+    fields:
+    - name: place
+      inferred_type: string
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - Firenze
+      - Milano
+      - Napoli
+      - Roma
+      - Venezia
+      likely_categorical: true
+      unique_values_observed: 5
+      unique_values_truncated: false
+    - name: period
+      inferred_type: string
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - Early Spring
+      - Early Summer
+      - Early Winter
+      - Early Autumn
+      likely_categorical: true
+      unique_values_observed: 4
+      unique_values_truncated: false
+    - name: number_of_reviews_ltm_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '14.0'
+      - '13.0'
+      - '11.0'
+      - '6.0'
+      - '5.0'
+      likely_categorical: false
+      unique_values_observed: 8
+      unique_values_truncated: false
+    - name: number_of_reviews_ltm_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '12.0'
+      - '11.0'
+      - '6.0'
+      - '5.0'
+      - '4.0'
+      likely_categorical: false
+      unique_values_observed: 7
+      unique_values_truncated: false
+    - name: host_total_listings_count_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '4.0'
+      - '3.0'
+      likely_categorical: false
+      unique_values_observed: 2
+      unique_values_truncated: false
+    - name: host_total_listings_count_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '3.0'
+      - '2.0'
+      likely_categorical: false
+      unique_values_observed: 2
+      unique_values_truncated: false
+    - name: neighbourhood_mode
+      inferred_type: string
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - Centro Storico
+      - BUENOS AIRES - VENEZIA
+      - San Lorenzo
+      - I Centro Storico
+      - Castello
+      likely_categorical: true
+      unique_values_observed: 5
+      unique_values_truncated: false
+    - name: neighbourhood_shannon_entropy
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '1.2874'
+      - '1.3446'
+      - '1.3021'
+      - '5.5081'
+      - '5.5333'
+      likely_categorical: false
+      unique_values_observed: 17
+      unique_values_truncated: false
+    - name: room_type_mode
+      inferred_type: string
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - Entire home/apt
+      likely_categorical: true
+      unique_values_observed: 1
+      unique_values_truncated: false
+    - name: room_type_shannon_entropy
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '0.7001'
+      - '0.6972'
+      - '0.7552'
+      - '0.6032'
+      - '0.6139'
+      likely_categorical: false
+      unique_values_observed: 17
+      unique_values_truncated: false
+    - name: accommodates_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '4.0'
+      - '3.0'
+      likely_categorical: false
+      unique_values_observed: 2
+      unique_values_truncated: false
+    - name: accommodates_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '1.0'
+      - '2.0'
+      likely_categorical: false
+      unique_values_observed: 2
+      unique_values_truncated: false
+    - name: price_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '130.0'
+      - '145.0'
+      - '115.0'
+      - '100.0'
+      - '105.0'
+      likely_categorical: false
+      unique_values_observed: 15
+      unique_values_truncated: false
+    - name: price_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '43.0'
+      - '49.0'
+      - '35.0'
+      - '30.0'
+      - '31.0'
+      likely_categorical: false
+      unique_values_observed: 16
+      unique_values_truncated: false
+    - name: number_of_reviews_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '34.0'
+      - '32.5'
+      - '30.5'
+      - '13.0'
+      - '12.0'
+      likely_categorical: false
+      unique_values_observed: 12
+      unique_values_truncated: false
+    - name: number_of_reviews_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '30.0'
+      - '28.5'
+      - '26.5'
+      - '11.0'
+      - '10.0'
+      likely_categorical: false
+      unique_values_observed: 13
+      unique_values_truncated: false
+    - name: review_scores_rating_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '4.82'
+      - '4.83'
+      - '4.81'
+      - '4.84'
+      likely_categorical: false
+      unique_values_observed: 4
+      unique_values_truncated: false
+    - name: review_scores_rating_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '0.14'
+      - '0.15'
+      - '0.17'
+      - '0.16'
+      likely_categorical: false
+      unique_values_observed: 4
+      unique_values_truncated: false
+    - name: review_scores_accuracy_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '4.88'
+      - '4.87'
+      - '4.86'
+      likely_categorical: false
+      unique_values_observed: 3
+      unique_values_truncated: false
+    - name: review_scores_accuracy_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '0.11'
+      - '0.12'
+      - '0.13'
+      - '0.1'
+      likely_categorical: false
+      unique_values_observed: 4
+      unique_values_truncated: false
+    - name: review_scores_cleanliness_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '4.87'
+      - '4.86'
+      - '4.88'
+      - '4.89'
+      - '4.85'
+      likely_categorical: false
+      unique_values_observed: 6
+      unique_values_truncated: false
+    - name: review_scores_cleanliness_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '0.13'
+      - '0.14'
+      - '0.12'
+      - '0.11'
+      - '0.15'
+      likely_categorical: false
+      unique_values_observed: 6
+      unique_values_truncated: false
+    - name: review_scores_checkin_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '4.91'
+      - '4.92'
+      - '4.88'
+      - '4.89'
+      likely_categorical: false
+      unique_values_observed: 4
+      unique_values_truncated: false
+    - name: review_scores_checkin_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '0.09'
+      - '0.08'
+      - '0.1'
+      likely_categorical: false
+      unique_values_observed: 3
+      unique_values_truncated: false
+    - name: review_scores_communication_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '4.93'
+      - '4.92'
+      - '4.94'
+      - '4.95'
+      - '4.96'
+      likely_categorical: false
+      unique_values_observed: 7
+      unique_values_truncated: false
+    - name: review_scores_communication_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '0.07'
+      - '0.08'
+      - '0.06'
+      - '0.05'
+      - '0.04'
+      likely_categorical: false
+      unique_values_observed: 6
+      unique_values_truncated: false
+    - name: review_scores_location_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '4.9'
+      - '4.89'
+      - '4.81'
+      - '4.8'
+      - '4.82'
+      likely_categorical: false
+      unique_values_observed: 6
+      unique_values_truncated: false
+    - name: review_scores_location_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '0.1'
+      - '0.11'
+      - '0.19'
+      - '0.2'
+      - '0.18'
+      likely_categorical: false
+      unique_values_observed: 7
+      unique_values_truncated: false
+    - name: review_scores_value_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '4.76'
+      - '4.75'
+      - '4.71'
+      - '4.7'
+      - '4.78'
+      likely_categorical: false
+      unique_values_observed: 7
+      unique_values_truncated: false
+    - name: review_scores_value_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '0.14'
+      - '0.15'
+      - '0.21'
+      - '0.2'
+      - '0.17'
+      likely_categorical: false
+      unique_values_observed: 6
+      unique_values_truncated: false
+    - name: reviews_per_month_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '1.33'
+      - '1.46'
+      - '1.25'
+      - '0.915'
+      - '0.94'
+      likely_categorical: false
+      unique_values_observed: 17
+      unique_values_truncated: false
+    - name: reviews_per_month_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '0.96'
+      - '1.08'
+      - '0.97'
+      - '0.735'
+      - '0.76'
+      likely_categorical: false
+      unique_values_observed: 16
+      unique_values_truncated: false
+    - name: latitude_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '43.7724'
+      - '43.7726'
+      - '43.7725'
+      - '45.4716'
+      - '45.4717'
+      likely_categorical: false
+      unique_values_observed: 14
+      unique_values_truncated: false
+    - name: latitude_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '0.0043'
+      - '0.0045'
+      - '0.0044'
+      - '0.0158'
+      - '0.016'
+      likely_categorical: false
+      unique_values_observed: 15
+      unique_values_truncated: false
+    - name: longitude_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '11.2542'
+      - '11.2543'
+      - '11.254'
+      - '9.1878'
+      - '9.1877'
+      likely_categorical: false
+      unique_values_observed: 15
+      unique_values_truncated: false
+    - name: longitude_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 17
+      null_count: 0
+      sample_values:
+      - '0.0079'
+      - '0.0081'
+      - '0.0202'
+      - '0.0207'
+      - '0.0208'
+      likely_categorical: false
+      unique_values_observed: 14
+      unique_values_truncated: false
+    coverage:
+      cities:
+      - Firenze
+      - Milano
+      - Napoli
+      - Roma
+      - Venezia
+      periods:
+      - Early Autumn
+      - Early Spring
+      - Early Summer
+      - Early Winter
+    candidate_keys:
+    - columns:
+      - place
+      - period
+      is_unique: true
+      duplicate_key_count: 0
+    notes:
+    - This dataset is aggregated and cannot be used for property-level modeling by
+      itself.
+    - City and period labels use different header names than the listing-level source
+      dataset.
+- name: neighbourhood_period_summary
+  relative_path: data/raw/airbnb/neighbourhood_period_summary.csv
+  original_filename: airbnb_italian_neighbourhood_grouped.csv
+  file_format: csv
+  grain: city_neighbourhood_period_aggregate
+  role: neighbourhood_level_benchmark_dataset
+  source_category: project_derived_source
+  encoding: utf-8
+  steward: project_team
+  description: Neighbourhood-period aggregate statistics used for local benchmark
+    context.
+  immutable: true
+  candidate_keys:
+  - - place
+    - neighbourhood
+    - period
+  city_columns:
+  - place
+  period_columns:
+  - period
+  date_columns: []
+  categorical_hints:
+  - place
+  - period
+  - neighbourhood
+  - room_type_mode
+  known_limitations:
+  - This dataset is aggregated and should be treated as benchmark context, not as
+    listing-level evidence.
+  observed_profile:
+    dataset_name: neighbourhood_period_summary
+    relative_path: data/raw/airbnb/neighbourhood_period_summary.csv
+    format: csv
+    grain: city_neighbourhood_period_aggregate
+    row_count: 655
+    geometry_types: []
+    fields:
+    - name: neighbourhood
+      inferred_type: string
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - ADRIANO
+      - AFFORI
+      - Aeroporto
+      - Alberoni
+      - Altobello
+      likely_categorical: true
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: period
+      inferred_type: string
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - Early Spring
+      - Early Summer
+      - Early Winter
+      - Early Autumn
+      likely_categorical: true
+      unique_values_observed: 4
+      unique_values_truncated: false
+    - name: number_of_reviews_ltm_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '4.0'
+      - '3.0'
+      - '5.0'
+      - '6.0'
+      - '7.0'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: number_of_reviews_ltm_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '3.0'
+      - '4.0'
+      - '7.0'
+      - '6.5'
+      - '2.5'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: host_total_listings_count_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '2.0'
+      - '4.0'
+      - '3.0'
+      - '9.0'
+      - '1.0'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: host_total_listings_count_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '1.0'
+      - '3.0'
+      - '2.0'
+      - '0.0'
+      - '2.5'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: room_type_mode
+      inferred_type: string
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - Entire home/apt
+      - Private room
+      likely_categorical: true
+      unique_values_observed: 2
+      unique_values_truncated: false
+    - name: room_type_shannon_entropy
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '0.6499'
+      - '0.6718'
+      - '0.662'
+      - '0.7549'
+      - '0.7427'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: accommodates_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '4.0'
+      - '3.0'
+      - '2.5'
+      - '2.0'
+      - '6.0'
+      likely_categorical: false
+      unique_values_observed: 11
+      unique_values_truncated: false
+    - name: accommodates_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '1.0'
+      - '0.5'
+      - '0.0'
+      - '2.0'
+      - '2.5'
+      likely_categorical: false
+      unique_values_observed: 7
+      unique_values_truncated: false
+    - name: price_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '80.0'
+      - '79.5'
+      - '75.0'
+      - '77.0'
+      - '129.0'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: price_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '16.0'
+      - '15.0'
+      - '18.5'
+      - '18.0'
+      - '21.0'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: number_of_reviews_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '8.0'
+      - '9.0'
+      - '23.0'
+      - '127.0'
+      - '131.0'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: number_of_reviews_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '7.0'
+      - '8.0'
+      - '22.0'
+      - '111.0'
+      - '112.0'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: review_scores_rating_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '4.87'
+      - '4.89'
+      - '4.82'
+      - '4.86'
+      - '4.8'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: review_scores_rating_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '0.13'
+      - '0.11'
+      - '0.18'
+      - '0.14'
+      - '0.2'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: review_scores_accuracy_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '4.89'
+      - '4.845'
+      - '4.87'
+      - '4.83'
+      - '4.86'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: review_scores_accuracy_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '0.11'
+      - '0.155'
+      - '0.13'
+      - '0.17'
+      - '0.14'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: review_scores_cleanliness_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '4.82'
+      - '4.815'
+      - '4.81'
+      - '4.88'
+      - '4.92'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: review_scores_cleanliness_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '0.18'
+      - '0.185'
+      - '0.19'
+      - '0.12'
+      - '0.08'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: review_scores_checkin_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '4.94'
+      - '4.945'
+      - '4.91'
+      - '4.83'
+      - '4.8'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: review_scores_checkin_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '0.06'
+      - '0.055'
+      - '0.09'
+      - '0.13'
+      - '0.05'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: review_scores_communication_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '5.0'
+      - '4.985'
+      - '4.935'
+      - '4.95'
+      - '4.94'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: review_scores_communication_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '0.0'
+      - '0.015'
+      - '0.065'
+      - '0.05'
+      - '0.06'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: review_scores_location_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '4.5'
+      - '4.455'
+      - '4.7'
+      - '4.67'
+      - '4.69'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: review_scores_location_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '0.27'
+      - '0.3'
+      - '0.255'
+      - '0.23'
+      - '0.05'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: review_scores_value_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '4.68'
+      - '4.74'
+      - '4.69'
+      - '4.7'
+      - '4.67'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: review_scores_value_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '0.27'
+      - '0.25'
+      - '0.255'
+      - '0.23'
+      - '0.26'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: reviews_per_month_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '0.86'
+      - '0.61'
+      - '0.71'
+      - '0.73'
+      - '0.69'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: reviews_per_month_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '0.6'
+      - '0.61'
+      - '0.53'
+      - '0.56'
+      - '0.69'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: place
+      inferred_type: string
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - Milano
+      - Venezia
+      - Napoli
+      - Firenze
+      - Roma
+      likely_categorical: true
+      unique_values_observed: 5
+      unique_values_truncated: false
+    - name: latitude_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '45.5119'
+      - '45.512'
+      - '45.5126'
+      - '45.515'
+      - '45.5148'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: latitude_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '0.003'
+      - '0.0031'
+      - '0.0023'
+      - '0.0043'
+      - '0.0014'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: longitude_median
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '9.2422'
+      - '9.2438'
+      - '9.1727'
+      - '9.1729'
+      - '12.3314'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: longitude_median_abs_deviation
+      inferred_type: float
+      nullable: false
+      non_empty_count: 655
+      null_count: 0
+      sample_values:
+      - '0.0037'
+      - '0.0036'
+      - '0.0034'
+      - '0.003'
+      - '0.0028'
+      likely_categorical: false
+      unique_values_observed: 20
+      unique_values_truncated: true
+    coverage:
+      cities:
+      - Firenze
+      - Milano
+      - Napoli
+      - Roma
+      - Venezia
+      periods:
+      - Early Autumn
+      - Early Spring
+      - Early Summer
+      - Early Winter
+    candidate_keys:
+    - columns:
+      - place
+      - neighbourhood
+      - period
+      is_unique: true
+      duplicate_key_count: 0
+    notes:
+    - This dataset is aggregated and should be treated as benchmark context, not as
+      listing-level evidence.
+- name: neighbourhood_reference
+  relative_path: data/raw/airbnb/neighbourhood_reference.csv
+  original_filename: airbnb_italy_city_neighbourhoods.csv
+  file_format: csv
+  grain: city_neighbourhood_reference_row
+  role: reference_mapping_dataset
+  source_category: reference_source
+  encoding: utf-8
+  steward: project_team
+  description: Reference mapping between neighbourhoods, neighbourhood groups, and
+    cities.
+  immutable: true
+  candidate_keys:
+  - - city
+    - neighbourhood
+  city_columns:
+  - city
+  period_columns: []
+  date_columns: []
+  categorical_hints:
+  - city
+  - neighbourhood
+  - neighbourhood_group
+  known_limitations:
+  - Neighbourhood group values can be null and must be treated as optional reference
+    data.
+  observed_profile:
+    dataset_name: neighbourhood_reference
+    relative_path: data/raw/airbnb/neighbourhood_reference.csv
+    format: csv
+    grain: city_neighbourhood_reference_row
+    row_count: 252
+    geometry_types: []
+    fields:
+    - name: neighbourhood_group
+      inferred_type: string
+      nullable: true
+      non_empty_count: 114
+      null_count: 138
+      sample_values:
+      - Isole
+      - Terraferma
+      likely_categorical: true
+      unique_values_observed: 2
+      unique_values_truncated: false
+    - name: neighbourhood
+      inferred_type: string
+      nullable: false
+      non_empty_count: 252
+      null_count: 0
+      sample_values:
+      - Campo di Marte
+      - Centro Storico
+      - Gavinana Galluzzo
+      - Isolotto Legnaia
+      - Rifredi
+      likely_categorical: true
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: city
+      inferred_type: string
+      nullable: false
+      non_empty_count: 252
+      null_count: 0
+      sample_values:
+      - firenze
+      - milano
+      - napoli
+      - roma
+      - venezia
+      likely_categorical: true
+      unique_values_observed: 5
+      unique_values_truncated: false
+    coverage:
+      cities:
+      - firenze
+      - milano
+      - napoli
+      - roma
+      - venezia
+    candidate_keys:
+    - columns:
+      - city
+      - neighbourhood
+      is_unique: true
+      duplicate_key_count: 0
+    notes:
+    - Neighbourhood group values can be null and must be treated as optional reference
+      data.
+- name: neighbourhood_boundaries
+  relative_path: data/raw/airbnb/neighbourhood_boundaries.geojson
+  original_filename: airbnb_italy_city_neighbourhoods_geojson.geojson
+  file_format: geojson
+  grain: boundary_feature
+  role: spatial_boundary_dataset
+  source_category: spatial_source
+  encoding: utf-8
+  steward: project_team
+  description: GeoJSON neighbourhood boundaries used for mapping and spatial context.
+  immutable: true
+  candidate_keys: []
+  city_columns: []
+  period_columns: []
+  date_columns: []
+  categorical_hints:
+  - neighbourhood
+  - neighbourhood_group
+  known_limitations:
+  - The GeoJSON features do not expose a city property directly.
+  - The boundary file contains multiple features for some logical neighbourhood entities.
+  - Some neighbourhood names require encoding normalization to align cleanly with
+    the reference CSV.
+  observed_profile:
+    dataset_name: neighbourhood_boundaries
+    relative_path: data/raw/airbnb/neighbourhood_boundaries.geojson
+    format: geojson
+    grain: boundary_feature
+    feature_count: 710
+    geometry_types:
+    - MultiPolygon
+    fields:
+    - name: city
+      inferred_type: string
+      nullable: false
+      non_empty_count: 198
+      null_count: 0
+      sample_values:
+      - viz
+      likely_categorical: true
+      unique_values_observed: 1
+      unique_values_truncated: false
+    - name: neighbourhood
+      inferred_type: string
+      nullable: false
+      non_empty_count: 710
+      null_count: 0
+      sample_values:
+      - Rifredi
+      - Gavinana Galluzzo
+      - Campo di Marte
+      - Isolotto Legnaia
+      - Centro Storico
+      likely_categorical: true
+      unique_values_observed: 20
+      unique_values_truncated: true
+    - name: neighbourhood_group
+      inferred_type: string
+      nullable: true
+      non_empty_count: 236
+      null_count: 474
+      sample_values:
+      - Isole
+      - Terraferma
+      likely_categorical: true
+      unique_values_observed: 2
+      unique_values_truncated: false
+    coverage: {}
+    candidate_keys: []
+    notes:
+    - The GeoJSON features do not expose a city property directly.
+    - The boundary file contains multiple features for some logical neighbourhood
+      entities.
+    - Some neighbourhood names require encoding normalization to align cleanly with
+      the reference CSV.
+relationships:
+- from_dataset: airbnb_listing_snapshots
+  to_dataset: city_period_summary
+  relation_type: many_to_one_after_normalization
+  join_columns:
+  - city_name
+  - period_label
+  notes: Join requires header normalization because the listing dataset uses `City`
+    and `Season`, while the aggregate dataset uses `place` and `period`.
+- from_dataset: airbnb_listing_snapshots
+  to_dataset: neighbourhood_reference
+  relation_type: many_to_one_after_normalization
+  join_columns:
+  - city_name
+  - neighbourhood_name
+  notes: Join uses normalized city and neighbourhood labels.
+- from_dataset: neighbourhood_period_summary
+  to_dataset: neighbourhood_reference
+  relation_type: many_to_one_after_normalization
+  join_columns:
+  - city_name
+  - neighbourhood_name
+  notes: Neighbourhood aggregates can be enriched through the reference mapping table.
+- from_dataset: neighbourhood_reference
+  to_dataset: neighbourhood_boundaries
+  relation_type: one_to_many_with_encoding_and_spatial_normalization
+  join_columns:
+  - neighbourhood_name
+  - neighbourhood_group_name
+  notes: The GeoJSON does not include city names and may expose multiple features
+    per logical neighbourhood, so later cleaning must normalize encoding and potentially
+    dissolve boundaries.

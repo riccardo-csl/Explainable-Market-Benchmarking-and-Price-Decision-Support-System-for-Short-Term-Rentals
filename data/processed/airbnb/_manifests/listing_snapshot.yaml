@@ -1,0 +1,35 @@
+dataset_name: listing_snapshot
+parquet_path: data/processed/airbnb/parquet/listing_snapshot.parquet
+csv_path: data/processed/airbnb/csv/listing_snapshot.csv
+row_count: 282047
+columns:
+- listing_id
+- reviews_last_twelve_months
+- host_since
+- is_superhost
+- host_listing_count
+- neighbourhood_name
+- beds_count
+- bedrooms_count
+- room_type
+- accommodates_count
+- nightly_price
+- total_reviews
+- rating_score
+- accuracy_score
+- cleanliness_score
+- checkin_score
+- communication_score
+- location_score
+- value_score
+- reviews_per_month
+- city_name
+- period_label
+- bathrooms_count
+- bathroom_type
+- latitude
+- longitude
+- snapshot_date
+source_datasets:
+- airbnb_listing_snapshots
+generation_date: '2026-03-11'

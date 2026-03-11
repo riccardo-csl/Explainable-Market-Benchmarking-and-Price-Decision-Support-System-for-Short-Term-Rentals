@@ -1,0 +1,53 @@
+name: neighbourhood_boundary
+description: Canonical boundary dataset for maps and spatial benchmarking after reference
+  enrichment.
+grain: cleaned_boundary_row
+primary_key:
+- boundary_id
+source_datasets:
+- neighbourhood_boundaries
+- neighbourhood_reference
+fields:
+- name: boundary_id
+  data_type: string
+  nullable: false
+  description: Generated stable identifier for the cleaned neighbourhood boundary
+    row.
+  source_columns: []
+- name: city_name
+  data_type: string
+  nullable: false
+  description: City label derived during cleaning by joining boundary data with the
+    reference mapping.
+  source_columns:
+  - neighbourhood
+  - neighbourhood_group
+- name: neighbourhood_name
+  data_type: string
+  nullable: false
+  description: Normalized neighbourhood label.
+  source_columns:
+  - neighbourhood
+- name: neighbourhood_group_name
+  data_type: string
+  nullable: true
+  description: Neighbourhood group label if available.
+  source_columns:
+  - neighbourhood_group
+- name: geometry_type
+  data_type: string
+  nullable: false
+  description: GeoJSON geometry type.
+  source_columns:
+  - geometry.type
+- name: geometry
+  data_type: geojson
+  nullable: false
+  description: GeoJSON geometry payload.
+  source_columns:
+  - geometry
+notes:
+- City names are expected to be enriched during cleaning because the raw GeoJSON does
+  not expose them.
+- Boundary rows may require dissolve logic if multiple raw features map to one logical
+  neighbourhood.

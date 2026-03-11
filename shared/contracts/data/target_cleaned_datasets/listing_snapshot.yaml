@@ -1,0 +1,175 @@
+name: listing_snapshot
+description: Canonical cleaned listing-level snapshot table used by modeling and downstream
+  APIs.
+grain: listing_snapshot_per_scrape_date
+primary_key:
+- listing_id
+- snapshot_date
+source_datasets:
+- airbnb_listing_snapshots
+fields:
+- name: listing_id
+  data_type: integer
+  nullable: false
+  description: Stable listing identifier.
+  source_columns:
+  - Listings id
+- name: reviews_last_twelve_months
+  data_type: integer
+  nullable: true
+  description: Review count observed in the last twelve months.
+  source_columns:
+  - Last year reviews
+- name: host_since
+  data_type: date
+  nullable: true
+  description: Host onboarding date.
+  source_columns:
+  - Host since
+- name: is_superhost
+  data_type: boolean
+  nullable: true
+  description: Whether the host is marked as a superhost after normalization.
+  source_columns:
+  - Host is superhost
+- name: host_listing_count
+  data_type: integer
+  nullable: true
+  description: Number of listings managed by the host.
+  source_columns:
+  - Host number of listings
+- name: neighbourhood_name
+  data_type: string
+  nullable: true
+  description: Normalized neighbourhood label.
+  source_columns:
+  - Neighbourhood
+- name: beds_count
+  data_type: integer
+  nullable: true
+  description: Number of beds.
+  source_columns:
+  - Beds number
+- name: bedrooms_count
+  data_type: integer
+  nullable: true
+  description: Number of bedrooms.
+  source_columns:
+  - Bedrooms number
+- name: room_type
+  data_type: string
+  nullable: true
+  description: Normalized room or property type label.
+  source_columns:
+  - Property type
+- name: accommodates_count
+  data_type: integer
+  nullable: true
+  description: Maximum allowed guests.
+  source_columns:
+  - Maximum allowed guests
+- name: nightly_price
+  data_type: float
+  nullable: true
+  description: Observed nightly listing price.
+  source_columns:
+  - Price
+- name: total_reviews
+  data_type: integer
+  nullable: true
+  description: Total number of reviews.
+  source_columns:
+  - Total reviews
+- name: rating_score
+  data_type: float
+  nullable: true
+  description: Overall rating score.
+  source_columns:
+  - Rating score
+- name: accuracy_score
+  data_type: float
+  nullable: true
+  description: Accuracy review score.
+  source_columns:
+  - Accuracy score
+- name: cleanliness_score
+  data_type: float
+  nullable: true
+  description: Cleanliness review score.
+  source_columns:
+  - Cleanliness score
+- name: checkin_score
+  data_type: float
+  nullable: true
+  description: Check-in review score.
+  source_columns:
+  - Checkin score
+- name: communication_score
+  data_type: float
+  nullable: true
+  description: Communication review score.
+  source_columns:
+  - Communication score
+- name: location_score
+  data_type: float
+  nullable: true
+  description: Location review score.
+  source_columns:
+  - Location score
+- name: value_score
+  data_type: float
+  nullable: true
+  description: Value-for-money review score.
+  source_columns:
+  - Value for money score
+- name: reviews_per_month
+  data_type: float
+  nullable: true
+  description: Reviews per month.
+  source_columns:
+  - Reviews per month
+- name: city_name
+  data_type: string
+  nullable: false
+  description: Normalized city label.
+  source_columns:
+  - City
+- name: period_label
+  data_type: string
+  nullable: false
+  description: Normalized seasonal label shared across datasets.
+  source_columns:
+  - Season
+- name: bathrooms_count
+  data_type: float
+  nullable: true
+  description: Bathroom count.
+  source_columns:
+  - Bathrooms number
+- name: bathroom_type
+  data_type: string
+  nullable: true
+  description: Bathroom type classification.
+  source_columns:
+  - Bathrooms type
+- name: latitude
+  data_type: float
+  nullable: true
+  description: Latitude parsed from the coordinates field.
+  source_columns:
+  - Coordinates
+- name: longitude
+  data_type: float
+  nullable: true
+  description: Longitude parsed from the coordinates field.
+  source_columns:
+  - Coordinates
+- name: snapshot_date
+  data_type: date
+  nullable: false
+  description: Source scrape date.
+  source_columns:
+  - Date of scraping
+notes:
+- Coordinates are parsed into latitude and longitude during cleaning.
+- The superhost field is normalized into a boolean.

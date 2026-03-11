@@ -1,0 +1,231 @@
+name: city_period_summary
+description: Canonical city-level benchmark table derived from the grouped city-period
+  source dataset.
+grain: city_period_aggregate
+primary_key:
+- city_name
+- period_label
+source_datasets:
+- city_period_summary
+fields:
+- name: city_name
+  data_type: string
+  nullable: false
+  description: Normalized city label.
+  source_columns:
+  - place
+- name: period_label
+  data_type: string
+  nullable: false
+  description: Normalized seasonal label.
+  source_columns:
+  - period
+- name: dominant_neighbourhood
+  data_type: string
+  nullable: true
+  description: Most common neighbourhood label within the city-period slice.
+  source_columns:
+  - neighbourhood_mode
+- name: neighbourhood_entropy
+  data_type: float
+  nullable: true
+  description: Shannon entropy of neighbourhood distribution.
+  source_columns:
+  - neighbourhood_shannon_entropy
+- name: dominant_room_type
+  data_type: string
+  nullable: true
+  description: Most common room type within the city-period slice.
+  source_columns:
+  - room_type_mode
+- name: room_type_entropy
+  data_type: float
+  nullable: true
+  description: Shannon entropy of room type distribution.
+  source_columns:
+  - room_type_shannon_entropy
+- name: reviews_last_twelve_months_median
+  data_type: float
+  nullable: true
+  description: Median number of reviews observed in the last twelve months.
+  source_columns:
+  - number_of_reviews_ltm_median
+- name: reviews_last_twelve_months_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median number of reviews observed
+    in the last twelve months.
+  source_columns:
+  - number_of_reviews_ltm_median_abs_deviation
+- name: host_listing_count_median
+  data_type: float
+  nullable: true
+  description: Median number of listings managed by the host.
+  source_columns:
+  - host_total_listings_count_median
+- name: host_listing_count_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median number of listings
+    managed by the host.
+  source_columns:
+  - host_total_listings_count_median_abs_deviation
+- name: accommodates_count_median
+  data_type: float
+  nullable: true
+  description: Median guest capacity.
+  source_columns:
+  - accommodates_median
+- name: accommodates_count_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median guest capacity.
+  source_columns:
+  - accommodates_median_abs_deviation
+- name: nightly_price_median
+  data_type: float
+  nullable: true
+  description: Median observed nightly price.
+  source_columns:
+  - price_median
+- name: nightly_price_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median observed nightly price.
+  source_columns:
+  - price_median_abs_deviation
+- name: total_reviews_median
+  data_type: float
+  nullable: true
+  description: Median total review count.
+  source_columns:
+  - number_of_reviews_median
+- name: total_reviews_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median total review count.
+  source_columns:
+  - number_of_reviews_median_abs_deviation
+- name: rating_score_median
+  data_type: float
+  nullable: true
+  description: Median overall rating score.
+  source_columns:
+  - review_scores_rating_median
+- name: rating_score_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median overall rating score.
+  source_columns:
+  - review_scores_rating_median_abs_deviation
+- name: accuracy_score_median
+  data_type: float
+  nullable: true
+  description: Median accuracy score.
+  source_columns:
+  - review_scores_accuracy_median
+- name: accuracy_score_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median accuracy score.
+  source_columns:
+  - review_scores_accuracy_median_abs_deviation
+- name: cleanliness_score_median
+  data_type: float
+  nullable: true
+  description: Median cleanliness score.
+  source_columns:
+  - review_scores_cleanliness_median
+- name: cleanliness_score_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median cleanliness score.
+  source_columns:
+  - review_scores_cleanliness_median_abs_deviation
+- name: checkin_score_median
+  data_type: float
+  nullable: true
+  description: Median check-in score.
+  source_columns:
+  - review_scores_checkin_median
+- name: checkin_score_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median check-in score.
+  source_columns:
+  - review_scores_checkin_median_abs_deviation
+- name: communication_score_median
+  data_type: float
+  nullable: true
+  description: Median communication score.
+  source_columns:
+  - review_scores_communication_median
+- name: communication_score_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median communication score.
+  source_columns:
+  - review_scores_communication_median_abs_deviation
+- name: location_score_median
+  data_type: float
+  nullable: true
+  description: Median location score.
+  source_columns:
+  - review_scores_location_median
+- name: location_score_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median location score.
+  source_columns:
+  - review_scores_location_median_abs_deviation
+- name: value_score_median
+  data_type: float
+  nullable: true
+  description: Median value score.
+  source_columns:
+  - review_scores_value_median
+- name: value_score_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median value score.
+  source_columns:
+  - review_scores_value_median_abs_deviation
+- name: reviews_per_month_median
+  data_type: float
+  nullable: true
+  description: Median reviews per month.
+  source_columns:
+  - reviews_per_month_median
+- name: reviews_per_month_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median reviews per month.
+  source_columns:
+  - reviews_per_month_median_abs_deviation
+- name: latitude_median
+  data_type: float
+  nullable: true
+  description: Median latitude.
+  source_columns:
+  - latitude_median
+- name: latitude_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median latitude.
+  source_columns:
+  - latitude_median_abs_deviation
+- name: longitude_median
+  data_type: float
+  nullable: true
+  description: Median longitude.
+  source_columns:
+  - longitude_median
+- name: longitude_median_abs_deviation
+  data_type: float
+  nullable: true
+  description: Absolute deviation around the median for median longitude.
+  source_columns:
+  - longitude_median_abs_deviation
+notes:
+- Field names are normalized into snake_case while preserving the original aggregate
+  semantics.

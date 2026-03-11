@@ -1,0 +1,11 @@
+dataset_name: neighbourhood_reference
+parquet_path: data/processed/airbnb/parquet/neighbourhood_reference.parquet
+csv_path: data/processed/airbnb/csv/neighbourhood_reference.csv
+row_count: 252
+columns:
+- city_name
+- neighbourhood_name
+- neighbourhood_group_name
+source_datasets:
+- neighbourhood_reference
+generation_date: '2026-03-11'

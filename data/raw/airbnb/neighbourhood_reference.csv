@@ -1,0 +1,253 @@
+neighbourhood_group,neighbourhood,city
+,Campo di Marte,firenze
+,Centro Storico,firenze
+,Gavinana Galluzzo,firenze
+,Isolotto Legnaia,firenze
+,Rifredi,firenze
+,ADRIANO,milano
+,AFFORI,milano
+,BAGGIO,milano
+,BANDE NERE,milano
+,BARONA,milano
+,BICOCCA,milano
+,BOVISA,milano
+,BOVISASCA,milano
+,BRERA,milano
+,BRUZZANO,milano
+,BUENOS AIRES - VENEZIA,milano
+,CANTALUPA,milano
+,CASCINA TRIULZA - EXPO,milano
+,CENTRALE,milano
+,CHIARAVALLE,milano
+,CITTA' STUDI,milano
+,COMASINA,milano
+,CORSICA,milano
+,DE ANGELI - MONTE ROSA,milano
+,DERGANO,milano
+,DUOMO,milano
+,EX OM - MORIVIONE,milano
+,FARINI,milano
+,FIGINO,milano
+,FORZE ARMATE,milano
+,GALLARATESE,milano
+,GARIBALDI REPUBBLICA,milano
+,GHISOLFA,milano
+,GIAMBELLINO,milano
+,GIARDINI PORTA VENEZIA,milano
+,GRATOSOGLIO - TICINELLO,milano
+,GRECO,milano
+,GUASTALLA,milano
+,ISOLA,milano
+,LAMBRATE,milano
+,LODI - CORVETTO,milano
+,LORENTEGGIO,milano
+,LORETO,milano
+,MACIACHINI - MAGGIOLINA,milano
+,MAGENTA - S. VITTORE,milano
+,MAGGIORE - MUSOCCO,milano
+,MECENATE,milano
+,MUGGIANO,milano
+,NAVIGLI,milano
+,NIGUARDA - CA' GRANDA,milano
+,ORTOMERCATO,milano
+,PADOVA,milano
+,PAGANO,milano
+,PARCO AGRICOLO SUD,milano
+,PARCO BOSCO IN CITT,milano
+,PARCO DEI NAVIGLI,milano
+,PARCO DELLE ABBAZIE,milano
+,PARCO FORLANINI - ORTICA,milano
+,PARCO LAMBRO - CIMIANO,milano
+,PARCO MONLUE' - PONTE LAMBRO,milano
+,PARCO NORD,milano
+,PARCO SEMPIONE,milano
+,PORTA ROMANA,milano
+,PORTELLO,milano
+,QT 8,milano
+,QUARTO CAGNINO,milano
+,QUARTO OGGIARO,milano
+,QUINTO ROMANO,milano
+,QUINTOSOLE,milano
+,RIPAMONTI,milano
+,ROGOREDO,milano
+,RONCHETTO DELLE RANE,milano
+,RONCHETTO SUL NAVIGLIO,milano
+,SACCO,milano
+,SARPI,milano
+,SCALO ROMANA,milano
+,S. CRISTOFORO,milano
+,SELINUNTE,milano
+,S. SIRO,milano
+,STADERA,milano
+,STEPHENSON,milano
+,TIBALDI,milano
+,TICINESE,milano
+,TORTONA,milano
+,TRENNO,milano
+,TRE TORRI,milano
+,TRIULZO SUPERIORE,milano
+,UMBRIA - MOLISE,milano
+,VIALE MONZA,milano
+,VIGENTINA,milano
+,VILLAPIZZONE,milano
+,WASHINGTON,milano
+,XXII MARZO,milano
+,Arenella,napoli
+,Avvocata,napoli
+,Bagnoli,napoli
+,Barra,napoli
+,Chiaia,napoli
+,Chiaiano,napoli
+,Fuorigrotta,napoli
+,Mercato,napoli
+,Miano,napoli
+,Montecalvario,napoli
+,Pendino,napoli
+,Pianura,napoli
+,Piscinola,napoli
+,Poggioreale,napoli
+,Ponticelli,napoli
+,Porto,napoli
+,Posillipo,napoli
+,San Carlo all'Arena,napoli
+,San Ferdinando,napoli
+,San Giovanni a Teduccio,napoli
+,San Giuseppe,napoli
+,San Lorenzo,napoli
+,San Pietro a Patierno,napoli
+,Scampia,napoli
+,Secondigliano,napoli
+,Soccavo,napoli
+,Stella,napoli
+,Vicaria,napoli
+,Vomero,napoli
+,Zona Industriale,napoli
+,I Centro Storico,roma
+,III Monte Sacro,roma
+,II Parioli/Nomentano,roma
+,IV Tiburtina,roma
+,IX Eur,roma
+,VIII Appia Antica,roma
+,VII San Giovanni/Cinecittà,roma
+,VI Roma delle Torri,roma
+,V Prenestino/Centocelle,roma
+,XI Arvalia/Portuense,roma
+,XIII Aurelia,roma
+,XII Monte Verde,roma
+,XIV Monte Mario,roma
+,X Ostia/Acilia,roma
+,XV Cassia/Flaminia,roma
+Isole,Alberoni,venezia
+Isole,Burano,venezia
+Isole,Cannaregio,venezia
+Isole,Castello,venezia
+Isole,Dorsoduro,venezia
+Isole,Giudecca,venezia
+Isole,Isola Buel del Lovo,venezia
+Isole,Isola Campalto,venezia
+Isole,Isola Carbonera,venezia
+Isole,Isola Cason Grassabo',venezia
+Isole,Isola Cason vecchio di Grassabo',venezia
+Isole,Isola delle Tresse,venezia
+Isole,Isola di Tessera,venezia
+Isole,Isola ex Batteria Fisolo,venezia
+Isole,Isola ex Forte S.Angelo della Polve,venezia
+Isole,Isola ex Ridotto di Crevan,venezia
+Isole,Isola La Cura,venezia
+Isole,Isola La Grazia,venezia
+Isole,Isola La Salina,venezia
+Isole,Isola Lazzaretto vecchio,venezia
+Isole,Isola Madonna del Monte,venezia
+Isole,Isola Ottagono Alberoni,venezia
+Isole,Isola Ottagono di Ca' Roman,venezia
+Isole,Isola Ottagono San Pietro,venezia
+Isole,Isola Peschieretta della Granzona,venezia
+Isole,Isola Poveglia,venezia
+Isole,Isola Sacca Sessola,venezia
+Isole,Isola San Clemente,venezia
+Isole,Isola San Francesco del Deserto,venezia
+Isole,Isola San Giacomo in Paludo,venezia
+Isole,Isola San Giorgio,venezia
+Isole,Isola San Giorgio in Alga,venezia
+Isole,Isola San Lazzaro degli Armeni,venezia
+Isole,Isola San Michele,venezia
+Isole,Isola San Secondo,venezia
+Isole,Isola San Servolo,venezia
+Isole,Isola Santa Cristina,venezia
+Isole,Isola Santo Spirito,venezia
+Isole,Lazzaretto Nuovo,venezia
+Isole,Lido,venezia
+Isole,Malamocco,venezia
+Isole,Mazzorbetto,venezia
+Isole,Mazzorbo,venezia
+Isole,Murano,venezia
+Isole,Pellestrina,venezia
+Isole,Sacca Fisola,venezia
+Isole,Sacca San Biagio,venezia
+Isole,San Marco,venezia
+Isole,San Pietro in Volta,venezia
+Isole,San Polo,venezia
+Isole,Santa Croce,venezia
+Isole,Santa Maria del Mare,venezia
+Isole,Sant'Elena,venezia
+Isole,Sant'Erasmo,venezia
+Isole,Torcello,venezia
+Isole,Tronchetto,venezia
+Isole,Vignole,venezia
+Terraferma,Aeroporto,venezia
+Terraferma,Altobello,venezia
+Terraferma,Asseggiano,venezia
+Terraferma,Bissuola,venezia
+Terraferma,Borgoforte,venezia
+Terraferma,Borgo Pezzana,venezia
+Terraferma,Ca' Brentelle,venezia
+Terraferma,Ca' Emiliani,venezia
+Terraferma,Campalto,venezia
+Terraferma,Campalto Bagaron,venezia
+Terraferma,Campalto CEP,venezia
+Terraferma,Campalto Cimitero,venezia
+Terraferma,Campalto Gobbi,venezia
+Terraferma,Capitello,venezia
+Terraferma,Carpenedo,venezia
+Terraferma,Ca' Sabbioni,venezia
+Terraferma,Case Dosa,venezia
+Terraferma,Ca' Solaro,venezia
+Terraferma,Centro Commerciale Auchan,venezia
+Terraferma,Centro Commerciale Panorama,venezia
+Terraferma,Chirignago,venezia
+Terraferma,Cipressina,venezia
+Terraferma,Dese,venezia
+Terraferma,Favaro,venezia
+Terraferma,Favaro Cimitero,venezia
+Terraferma,Favaro Col San Martino,venezia
+Terraferma,Ferrarese,venezia
+Terraferma,Gatta - Bondu?,venezia
+Terraferma,Gazzera,venezia
+Terraferma,Giustizia,venezia
+Terraferma,La Favorita,venezia
+Terraferma,Macello,venezia
+Terraferma,Maguolo,venezia
+Terraferma,Malcontenta,venezia
+Terraferma,Marghera,venezia
+Terraferma,Marghera Catene,venezia
+Terraferma,Marghera Zona Industriale,venezia
+Terraferma,Marocco Terraglio,venezia
+Terraferma,Marocco Zelarino,venezia
+Terraferma,Molino Ronchin,venezia
+Terraferma,Piave 1860,venezia
+Terraferma,Pra' Secco,venezia
+Terraferma,Quartiere Pertini,venezia
+Terraferma,San Lorenzo XXV Aprile,venezia
+Terraferma,Santa Barbara,venezia
+Terraferma,Sardi (M.5 - Q11),venezia
+Terraferma,Sardi (M.5 - Q.12),venezia
+Terraferma,Scaramuzza,venezia
+Terraferma,Taru',venezia
+Terraferma,Tessera,venezia
+Terraferma,Torre Antica,venezia
+Terraferma,Trivignano,venezia
+Terraferma,Villabona,venezia
+Terraferma,Villaggio San Marco,venezia
+Terraferma,Villaggio Sartori,venezia
+Terraferma,Zelarino,venezia
+Terraferma,Zona Commerciale via Torino,venezia

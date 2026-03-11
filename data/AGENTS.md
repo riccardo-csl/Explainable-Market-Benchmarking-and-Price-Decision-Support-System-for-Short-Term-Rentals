@@ -7,6 +7,8 @@
 ## Expected layout
 - `raw/`
   Immutable source datasets.
+- `raw/_manifests/`
+  Provenance metadata for each canonical raw dataset.
 - `processed/`
   Derived datasets created from repeatable transformations.
 - `external/`
@@ -14,6 +16,7 @@
 
 ## Conventions
 - Treat files in `raw/` as immutable inputs.
+- Treat files in `raw/_manifests/` as the machine-readable source of provenance and integrity metadata for canonical raw files.
 - Never overwrite source data in place.
 - Document provenance, schema, and transformation lineage for any processed output.
 - Use descriptive filenames and include version or date information when relevant.
