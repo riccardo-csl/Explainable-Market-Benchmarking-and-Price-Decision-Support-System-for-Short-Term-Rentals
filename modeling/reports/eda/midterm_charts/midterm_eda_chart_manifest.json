@@ -1,0 +1,75 @@
+{
+  "chart_group": "midterm_eda_slides",
+  "charts": [
+    {
+      "chart_id": "rows_by_city",
+      "title": "Listing Snapshot Coverage by City",
+      "filename": "listing_rows_by_city.svg",
+      "slide_hint": "EDA Part 1",
+      "relative_path": "modeling/reports/eda/midterm_charts/listing_rows_by_city.svg"
+    },
+    {
+      "chart_id": "rows_by_city_and_period",
+      "title": "Listing Snapshot Coverage by City and Period",
+      "filename": "listing_rows_by_city_and_period.svg",
+      "slide_hint": "EDA Part 1",
+      "relative_path": "modeling/reports/eda/midterm_charts/listing_rows_by_city_and_period.svg"
+    },
+    {
+      "chart_id": "room_type_share",
+      "title": "Room Type Composition",
+      "filename": "room_type_share.svg",
+      "slide_hint": "EDA Part 1",
+      "relative_path": "modeling/reports/eda/midterm_charts/room_type_share.svg"
+    },
+    {
+      "chart_id": "nightly_price_histogram",
+      "title": "Nightly Price Distribution (Clipped at 99th Percentile)",
+      "filename": "nightly_price_histogram.svg",
+      "slide_hint": "EDA Part 2",
+      "relative_path": "modeling/reports/eda/midterm_charts/nightly_price_histogram.svg"
+    },
+    {
+      "chart_id": "nightly_price_boxplot",
+      "title": "Nightly Price Boxplot",
+      "filename": "nightly_price_boxplot.svg",
+      "slide_hint": "EDA Part 2",
+      "relative_path": "modeling/reports/eda/midterm_charts/nightly_price_boxplot.svg"
+    },
+    {
+      "chart_id": "median_price_by_city",
+      "title": "Median Nightly Price by City",
+      "filename": "median_price_by_city.svg",
+      "slide_hint": "EDA Part 3",
+      "relative_path": "modeling/reports/eda/midterm_charts/median_price_by_city.svg"
+    },
+    {
+      "chart_id": "median_price_heatmap_city_period",
+      "title": "Median Nightly Price by City and Period",
+      "filename": "median_price_heatmap_city_period.svg",
+      "slide_hint": "EDA Part 3",
+      "relative_path": "modeling/reports/eda/midterm_charts/median_price_heatmap_city_period.svg"
+    },
+    {
+      "chart_id": "median_price_by_room_type",
+      "title": "Median Nightly Price by Room Type",
+      "filename": "median_price_by_room_type.svg",
+      "slide_hint": "EDA Part 4",
+      "relative_path": "modeling/reports/eda/midterm_charts/median_price_by_room_type.svg"
+    },
+    {
+      "chart_id": "median_price_by_accommodates_band",
+      "title": "Median Nightly Price by Guest Capacity Band",
+      "filename": "median_price_by_accommodates_band.svg",
+      "slide_hint": "EDA Part 4",
+      "relative_path": "modeling/reports/eda/midterm_charts/median_price_by_accommodates_band.svg"
+    },
+    {
+      "chart_id": "neighbourhood_price_extremes",
+      "title": "Selected High-Price and Lower-Price Neighbourhoods",
+      "filename": "neighbourhood_price_extremes.svg",
+      "slide_hint": "EDA Part 4",
+      "relative_path": "modeling/reports/eda/midterm_charts/neighbourhood_price_extremes.svg"
+    }
+  ]
+}
