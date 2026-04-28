@@ -1,9 +1,10 @@
 # Agent instructions (scope: this directory and subdirectories)
 
 ## Scope and ownership
-- This AGENTS.md applies to `/home/arch/Scrivania/archive/shared` and below.
+- This AGENTS.md applies to `/home/arch/Scrivania/Analytic_capstone_proj/shared` and below.
 - This module owns shared schemas, validation rules, constants, typed contracts, and utilities used by multiple modules.
 - Primary role: language-agnostic contracts and shared validation artifacts between backend, modeling, and frontend.
+- Current status: this directory currently stores data contracts. Add source code here only when a contract or validator is genuinely shared across modules.
 
 ## Expected layout
 - `src/schemas/`

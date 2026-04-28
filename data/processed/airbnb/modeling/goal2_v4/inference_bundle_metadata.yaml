@@ -1,0 +1,74 @@
+bundle_version: goal2_v4
+champion_model_name: linear_baseline
+fallback_model_name: tree_challenger
+training_date: '2026-04-09'
+feature_columns:
+- accommodates_count
+- beds_count
+- bedrooms_count
+- bathrooms_count
+- host_listing_count
+- total_reviews
+- reviews_last_twelve_months
+- reviews_per_month
+- rating_score
+- accuracy_score
+- cleanliness_score
+- checkin_score
+- communication_score
+- location_score
+- value_score
+- latitude
+- longitude
+- host_tenure_days
+- distance_to_city_center_km
+- distance_to_neighbourhood_center_km
+- room_type
+- bathroom_type
+- is_superhost
+- season_peak_flag
+- season_shoulder_flag
+- venezia_group_name
+target_column: nightly_price
+group_column: listing_id
+metrics:
+  linear_baseline:
+    model_name: linear_baseline
+    mae: 75.769728377099
+    rmse: 271.8790842159466
+    per_city_mae:
+      Firenze: 80.7944258161328
+      Milano: 84.41263432015425
+      Napoli: 59.564189132192425
+      Roma: 71.93653199920426
+      Venezia: 77.76471392051128
+    per_period_mae:
+      Early Autumn: 82.81391801735805
+      Early Spring: 70.2240350273918
+      Early Summer: 76.02905602452438
+      Early Winter: 73.50443984495149
+    price_band_mae:
+      lower: 54.43492981530751
+      middle: 47.60474889957586
+      upper: 125.6897313694293
+    metadata: {}
+  tree_challenger:
+    model_name: tree_challenger
+    mae: 67.10824302638598
+    rmse: 265.08337385836245
+    per_city_mae:
+      Firenze: 79.70326614993331
+      Milano: 75.84686608178541
+      Napoli: 46.72260048189791
+      Roma: 61.94094797728703
+      Venezia: 67.43799252455658
+    per_period_mae:
+      Early Autumn: 71.35946714834108
+      Early Spring: 62.39022719269207
+      Early Summer: 65.0320368141968
+      Early Winter: 69.32608434533113
+    price_band_mae:
+      lower: 41.811904518018366
+      middle: 40.35336481581974
+      upper: 119.61050190294003
+    metadata: {}

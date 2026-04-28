@@ -1,0 +1,3 @@
+*.joblib binary
+*.parquet binary
+*.pdf binary

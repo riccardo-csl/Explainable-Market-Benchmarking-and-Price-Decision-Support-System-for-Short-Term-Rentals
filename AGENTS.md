@@ -1,10 +1,11 @@
 # Agent instructions (scope: this directory and subdirectories)
 
 ## Scope and layout
-- This AGENTS.md applies to `/home/arch/Scrivania/archive` and below.
+- This AGENTS.md applies to `/home/arch/Scrivania/Analytic_capstone_proj` and below.
 - This repository currently contains datasets and project documents. Treat it as the root of a new software project and keep the codebase modular from the first implementation step.
 - Prefer creating clear top-level modules instead of placing application code in the repository root.
 - Approved initial stack: `backend` in Python with FastAPI, `modeling` in Python, `frontend` in Next.js/React, `shared` for shared contracts and schemas, and `tests` for cross-module integration and end-to-end coverage.
+- Current repository status: the data layer and part of the `modeling` module exist; `backend`, `frontend`, and top-level `tests` are still scaffolds and must be bootstrapped before assuming runtime commands or app entrypoints exist.
 
 ## Planned project structure
 - `data/`

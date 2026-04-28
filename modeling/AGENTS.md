@@ -1,7 +1,7 @@
 # Agent instructions (scope: this directory and subdirectories)
 
 ## Scope and ownership
-- This AGENTS.md applies to `/home/arch/Scrivania/archive/modeling` and below.
+- This AGENTS.md applies to `/home/arch/Scrivania/Analytic_capstone_proj/modeling` and below.
 - This module owns feature engineering, training pipelines, evaluation logic, comparable-listing algorithms, clustering experiments, and model reports.
 - Primary stack: Python.
 
@@ -22,7 +22,7 @@
   Modeling unit and pipeline tests.
 
 ## Commands
-- Use Python project tooling consistent with the root project setup once initialized.
+- Use the Python project tooling already defined in `modeling/pyproject.toml`.
 - Preferred test framework: `pytest`.
 - Prefer reproducible scripts or pipelines over ad hoc notebook execution.
 

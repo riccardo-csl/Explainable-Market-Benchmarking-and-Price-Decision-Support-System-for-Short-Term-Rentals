@@ -1,9 +1,10 @@
 # Agent instructions (scope: this directory and subdirectories)
 
 ## Scope and ownership
-- This AGENTS.md applies to `/home/arch/Scrivania/archive/tests` and below.
+- This AGENTS.md applies to `/home/arch/Scrivania/Analytic_capstone_proj/tests` and below.
 - This module owns cross-module integration tests, end-to-end tests, fixtures, and test harnesses that do not belong to a single module.
 - Expected scope: backend/frontend integration and end-to-end validation across the FastAPI and Next.js stack.
+- Current status: this module is still a scaffold. Add top-level integration and e2e tests here only when the product surface spans multiple modules.
 
 ## Expected layout
 - `integration/`

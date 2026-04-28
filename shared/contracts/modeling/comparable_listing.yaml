@@ -1,0 +1,39 @@
+name: comparable_listing
+description: Comparable listing payload returned by the Goal 2 market benchmarking engine.
+fields:
+- name: listing_id
+  data_type: integer
+  nullable: false
+  description: Stable identifier of the comparable listing.
+- name: snapshot_date
+  data_type: date
+  nullable: false
+  description: Snapshot date of the comparable row.
+- name: city_name
+  data_type: string
+  nullable: false
+  description: City label of the comparable listing.
+- name: neighbourhood_name
+  data_type: string
+  nullable: false
+  description: Neighbourhood label of the comparable listing.
+- name: room_type
+  data_type: string
+  nullable: false
+  description: Room type of the comparable listing.
+- name: nightly_price
+  data_type: float
+  nullable: false
+  description: Observed nightly price of the comparable listing.
+- name: similarity_score
+  data_type: float
+  nullable: false
+  description: Composite similarity score used for ranking.
+- name: distance_km
+  data_type: float
+  nullable: true
+  description: Geographic distance between the target listing and the comparable.
+- name: used_city_fallback
+  data_type: boolean
+  nullable: false
+  description: Whether the comparable was selected from the widened city-level candidate pool.

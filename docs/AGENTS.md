@@ -1,7 +1,7 @@
 # Agent instructions (scope: this directory and subdirectories)
 
 ## Scope and ownership
-- This AGENTS.md applies to `/home/arch/Scrivania/archive/docs` and below.
+- This AGENTS.md applies to `/home/arch/Scrivania/Analytic_capstone_proj/docs` and below.
 - This module owns technical documentation, architecture notes, data assumptions, testing guidance, model reports, and runbooks.
 
 ## Conventions

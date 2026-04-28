@@ -1,0 +1,35 @@
+name: model_bundle_metadata
+description: Metadata for the serialized Goal 2 inference bundle.
+fields:
+- name: bundle_version
+  data_type: string
+  nullable: false
+  description: Version identifier of the inference bundle.
+- name: champion_model_name
+  data_type: string
+  nullable: false
+  description: Name of the primary estimation model selected for Goal 2.
+- name: fallback_model_name
+  data_type: string
+  nullable: false
+  description: Name of the documented fallback model.
+- name: training_date
+  data_type: date
+  nullable: false
+  description: Date when the bundle was built.
+- name: feature_columns
+  data_type: array[string]
+  nullable: false
+  description: Ordered feature columns expected by the bundle.
+- name: target_column
+  data_type: string
+  nullable: false
+  description: Target variable used during training.
+- name: group_column
+  data_type: string
+  nullable: false
+  description: Grouping column used for grouped train and test splits.
+- name: metrics
+  data_type: object
+  nullable: false
+  description: Model evaluation metrics recorded at bundle build time.

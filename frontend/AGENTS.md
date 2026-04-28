@@ -1,9 +1,10 @@
 # Agent instructions (scope: this directory and subdirectories)
 
 ## Scope and ownership
-- This AGENTS.md applies to `/home/arch/Scrivania/archive/frontend` and below.
+- This AGENTS.md applies to `/home/arch/Scrivania/Analytic_capstone_proj/frontend` and below.
 - This module owns the dashboard UI, user interactions, charts, forms, and presentation logic.
 - Primary stack: Next.js + React.
+- Current status: this module is not bootstrapped yet. Create the app in this directory and keep UI code out of the repository root.
 
 ## Expected layout
 - `src/`
@@ -20,7 +21,7 @@
   Component, integration, and UI workflow tests.
 
 ## Commands
-- Use standard Next.js project commands once initialized.
+- Bootstrap the Next.js app inside `frontend/` before adding runtime-specific instructions.
 - Preferred test frameworks: unit and component tests for UI logic, with integration coverage for feature flows.
 
 ## Conventions
@@ -32,7 +33,7 @@
 
 ## Testing
 - Every new user-facing feature requires component or integration coverage.
-- Critical workflows need end-to-end coverage through the top-level `tests/` module once available.
+- Critical workflows need end-to-end coverage through the top-level `tests/` module after it is bootstrapped.
 - Keep frontend coverage at or above `85%`.
 
 ## Do not

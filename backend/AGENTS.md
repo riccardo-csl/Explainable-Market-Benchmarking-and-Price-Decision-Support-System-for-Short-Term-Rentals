@@ -1,9 +1,10 @@
 # Agent instructions (scope: this directory and subdirectories)
 
 ## Scope and ownership
-- This AGENTS.md applies to `/home/arch/Scrivania/archive/backend` and below.
+- This AGENTS.md applies to `/home/arch/Scrivania/Analytic_capstone_proj/backend` and below.
 - This module owns APIs, application services, domain workflows, orchestration, persistence integration, and model-serving endpoints.
 - Primary stack: Python + FastAPI.
+- Current status: this module is not bootstrapped yet. Create the backend structure under this directory instead of placing API code at repository root.
 
 ## Expected layout
 - `src/`
@@ -22,8 +23,8 @@
   Backend unit and integration tests.
 
 ## Commands
-- Use Python project tooling consistent with the root project setup once initialized.
-- Expected backend entrypoint: a FastAPI application under `src/`.
+- Bootstrap Python tooling inside `backend/` before adding runtime-specific instructions.
+- Expected backend entrypoint after bootstrap: a FastAPI application under `src/`.
 - Preferred test framework: `pytest`.
 
 ## Conventions

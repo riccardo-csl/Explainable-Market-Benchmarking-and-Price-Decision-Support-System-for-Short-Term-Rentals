@@ -1,7 +1,7 @@
 # Agent instructions (scope: this directory and subdirectories)
 
 ## Scope and ownership
-- This AGENTS.md applies to `/home/arch/Scrivania/archive/data` and below.
+- This AGENTS.md applies to `/home/arch/Scrivania/Analytic_capstone_proj/data` and below.
 - This module owns raw datasets, processed datasets, external imports, dataset manifests, and data provenance metadata.
 
 ## Expected layout

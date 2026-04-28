@@ -1,0 +1,75 @@
+name: price_decision_payload
+description: Goal 2 decision-support payload combining price estimation, benchmark range, comparables, and local explanations.
+fields:
+- name: listing_id
+  data_type: integer
+  nullable: false
+  description: Stable identifier of the target listing.
+- name: snapshot_date
+  data_type: date
+  nullable: false
+  description: Snapshot date of the target listing.
+- name: city_name
+  data_type: string
+  nullable: false
+  description: City label of the target listing.
+- name: period_label
+  data_type: string
+  nullable: false
+  description: Seasonal label of the target listing.
+- name: primary_decision_signal
+  data_type: string
+  nullable: false
+  description: Declares which signal should be treated as primary for pricing decisions. Goal 2 uses benchmark_range.
+- name: decision_policy
+  data_type: string
+  nullable: false
+  description: Product-level decision policy identifier. Goal 2 uses benchmark-led positioning.
+- name: decision_signal_summary
+  data_type: string
+  nullable: false
+  description: Human-readable note explaining that benchmark range leads the decision while the model estimate is supporting only.
+- name: benchmark_lower_bound
+  data_type: float
+  nullable: false
+  description: Lower bound of the local benchmark range.
+- name: benchmark_upper_bound
+  data_type: float
+  nullable: false
+  description: Upper bound of the local benchmark range.
+- name: price_positioning_label
+  data_type: string
+  nullable: false
+  description: Classification of the listing relative to the benchmark range.
+- name: benchmark_source
+  data_type: string
+  nullable: false
+  description: Source used to derive the benchmark range.
+- name: estimated_market_price
+  data_type: float
+  nullable: false
+  description: Point estimate returned by the selected model bundle, retained as a supporting signal rather than the primary decision basis.
+- name: model_estimate_role
+  data_type: string
+  nullable: false
+  description: Declares the role of the model estimate in the decision payload. Goal 2 uses supporting_signal.
+- name: champion_model_name
+  data_type: string
+  nullable: false
+  description: Name of the primary model used for the point estimate.
+- name: fallback_model_name
+  data_type: string
+  nullable: false
+  description: Name of the fallback model retained for Goal 2.
+- name: selected_comparables
+  data_type: array[comparable_listing]
+  nullable: false
+  description: Ranked comparable listings used to support the benchmark and explanation.
+- name: local_explanation
+  data_type: object
+  nullable: false
+  description: Local explanation payload describing the main upward and downward price drivers.
+- name: fallback_used
+  data_type: boolean
+  nullable: false
+  description: Whether a fallback benchmark context was used due to sparse comparables.
