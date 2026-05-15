@@ -13,6 +13,10 @@ fields:
   data_type: string
   nullable: false
   description: Name of the documented fallback model.
+- name: available_model_names
+  data_type: array[string]
+  nullable: false
+  description: Names of all trained estimators evaluated for this bundle.
 - name: training_date
   data_type: date
   nullable: false
@@ -29,7 +33,15 @@ fields:
   data_type: string
   nullable: false
   description: Grouping column used for grouped train and test splits.
+- name: model_estimate_interval_calibration
+  data_type: object
+  nullable: false
+  description: Residual-quantile calibration used to build the champion model estimate interval.
+- name: model_estimate_interval_calibration_by_model
+  data_type: object
+  nullable: false
+  description: Residual-quantile interval calibration recorded for each trained model.
 - name: metrics
   data_type: object
   nullable: false
-  description: Model evaluation metrics recorded at bundle build time.
+  description: Model evaluation metrics recorded at bundle build time, including sliced MAE, MAPE, and benchmark diagnostic fields where available.

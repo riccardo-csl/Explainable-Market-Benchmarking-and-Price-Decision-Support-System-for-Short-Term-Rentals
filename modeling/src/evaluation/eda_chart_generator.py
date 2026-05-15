@@ -23,21 +23,30 @@ from .eda_summary_builder import (
     build_rows_by_city,
     build_rows_by_city_and_period,
 )
+from .viz_theme import COLORS, PERIOD_COLORS, ROOM_TYPE_COLORS, TYPOGRAPHY
 
 
 OUTPUT_SUBDIRECTORY = Path("modeling") / "reports" / "eda" / "midterm_charts"
 
-PRIMARY_COLOR = "#1F567D"
-SECONDARY_COLOR = "#2A9D8F"
-ACCENT_COLOR = "#F4A261"
-WARNING_COLOR = "#E76F51"
-NEUTRAL_COLOR = "#6C7A89"
-GRID_COLOR = "#D7DEE6"
-TEXT_COLOR = "#17324D"
-BACKGROUND_COLOR = "#FFFFFF"
-HEATMAP_LOW_COLOR = "#F3E79B"
-HEATMAP_HIGH_COLOR = "#2C7BB6"
-PERIOD_COLORS = ["#1F567D", "#2A9D8F", "#F4A261", "#E76F51"]
+PRIMARY_COLOR = COLORS.teal
+SECONDARY_COLOR = COLORS.blue
+ACCENT_COLOR = COLORS.amber
+WARNING_COLOR = COLORS.amber
+NEUTRAL_COLOR = COLORS.grey
+GRID_COLOR = COLORS.grid
+BORDER_COLOR = COLORS.border
+TEXT_COLOR = COLORS.text
+SECONDARY_TEXT_COLOR = COLORS.text_secondary
+BACKGROUND_COLOR = COLORS.background
+PANEL_COLOR = COLORS.panel
+HEATMAP_LOW_COLOR = COLORS.teal_light
+HEATMAP_HIGH_COLOR = COLORS.blue
+ROOM_TYPE_COLOR_SEQUENCE = [
+    ROOM_TYPE_COLORS["Entire home"],
+    ROOM_TYPE_COLORS["Private room"],
+    ROOM_TYPE_COLORS["Hotel room"],
+    ROOM_TYPE_COLORS["Shared room"],
+]
 
 FIGURE_DIMENSIONS = {
     "default": (1100, 650),
@@ -63,12 +72,12 @@ def _svg_document(width: int, height: int, title: str, body: str) -> str:
         f'viewBox="0 0 {width} {height}" role="img" aria-labelledby="title">'
         f"<title>{escape(title)}</title>"
         "<style>"
-        "text { font-family: Arial, Helvetica, sans-serif; fill: #17324D; }"
-        ".title { font-size: 28px; font-weight: 700; }"
-        ".axis-label { font-size: 16px; font-weight: 600; }"
-        ".tick { font-size: 13px; }"
-        ".value { font-size: 12px; font-weight: 600; }"
-        ".legend { font-size: 13px; }"
+        f"text {{ font-family: Arial, Helvetica, sans-serif; fill: {TEXT_COLOR}; }}"
+        f".title {{ font-size: {TYPOGRAPHY.figure_title}px; font-weight: 700; }}"
+        f".axis-label {{ font-size: {TYPOGRAPHY.axis_label}px; font-weight: 600; }}"
+        f".tick {{ font-size: {TYPOGRAPHY.tick_label}px; }}"
+        f".value {{ font-size: {TYPOGRAPHY.annotation}px; font-weight: 600; }}"
+        f".legend {{ font-size: {TYPOGRAPHY.legend}px; }}"
         "</style>"
         f'<rect x="0" y="0" width="{width}" height="{height}" fill="{BACKGROUND_COLOR}" />'
         f"{body}</svg>"
@@ -183,7 +192,7 @@ def _render_vertical_bar_chart(
     title: str,
     y_axis_label: str,
     destination: Path,
-    fill: str,
+    fill: str | list[str],
     chart_id: str,
     slide_hint: str,
     value_formatter,
@@ -205,9 +214,9 @@ def _render_vertical_bar_chart(
         body_parts.append(_svg_line(left, y, left + plot_width, y, stroke=GRID_COLOR, dasharray="4 4"))
         body_parts.append(_svg_text(left - 12, y + 4, tick_formatter(tick), anchor="end"))
 
-    body_parts.append(_svg_line(left, top, left, top + plot_height, stroke=TEXT_COLOR, stroke_width=1.5))
+    body_parts.append(_svg_line(left, top, left, top + plot_height, stroke=BORDER_COLOR, stroke_width=1.5))
     body_parts.append(
-        _svg_line(left, top + plot_height, left + plot_width, top + plot_height, stroke=TEXT_COLOR, stroke_width=1.5)
+        _svg_line(left, top + plot_height, left + plot_width, top + plot_height, stroke=BORDER_COLOR, stroke_width=1.5)
     )
 
     category_width = plot_width / max(len(data), 1)
@@ -216,7 +225,8 @@ def _render_vertical_bar_chart(
         bar_x = left + index * category_width + (category_width - bar_width) / 2
         bar_height = _linear_scale(float(value), 0, max_value, 0, plot_height)
         bar_y = top + plot_height - bar_height
-        body_parts.append(_svg_rect(bar_x, bar_y, bar_width, bar_height, fill=fill))
+        bar_fill = fill[index % len(fill)] if isinstance(fill, list) else fill
+        body_parts.append(_svg_rect(bar_x, bar_y, bar_width, bar_height, fill=bar_fill))
         body_parts.append(_svg_text(bar_x + bar_width / 2, bar_y - 8, value_formatter(float(value)), css_class="value"))
         body_parts.append(_svg_text(bar_x + bar_width / 2, top + plot_height + 28, label))
 
@@ -262,9 +272,9 @@ def _render_horizontal_bar_chart(
         body_parts.append(_svg_line(x, top, x, top + plot_height, stroke=GRID_COLOR, dasharray="4 4"))
         body_parts.append(_svg_text(x, top + plot_height + 24, tick_formatter(tick)))
 
-    body_parts.append(_svg_line(left, top, left, top + plot_height, stroke=TEXT_COLOR, stroke_width=1.5))
+    body_parts.append(_svg_line(left, top, left, top + plot_height, stroke=BORDER_COLOR, stroke_width=1.5))
     body_parts.append(
-        _svg_line(left, top + plot_height, left + plot_width, top + plot_height, stroke=TEXT_COLOR, stroke_width=1.5)
+        _svg_line(left, top + plot_height, left + plot_width, top + plot_height, stroke=BORDER_COLOR, stroke_width=1.5)
     )
 
     row_height = plot_height / max(len(data), 1)
@@ -321,9 +331,9 @@ def _render_rows_by_city_and_period_chart(data: pd.DataFrame, destination: Path)
         body_parts.append(_svg_line(left, y, left + plot_width, y, stroke=GRID_COLOR, dasharray="4 4"))
         body_parts.append(_svg_text(left - 12, y + 4, _format_int(tick), anchor="end"))
 
-    body_parts.append(_svg_line(left, top, left, top + plot_height, stroke=TEXT_COLOR, stroke_width=1.5))
+    body_parts.append(_svg_line(left, top, left, top + plot_height, stroke=BORDER_COLOR, stroke_width=1.5))
     body_parts.append(
-        _svg_line(left, top + plot_height, left + plot_width, top + plot_height, stroke=TEXT_COLOR, stroke_width=1.5)
+        _svg_line(left, top + plot_height, left + plot_width, top + plot_height, stroke=BORDER_COLOR, stroke_width=1.5)
     )
 
     legend_x = width - right - 240
@@ -360,7 +370,7 @@ def _render_room_type_share_chart(data: pd.Series, destination: Path) -> ChartAr
         title="Room Type Composition",
         x_axis_label="Share of listing snapshot rows (%)",
         destination=destination,
-        colors=[PRIMARY_COLOR, SECONDARY_COLOR, ACCENT_COLOR, WARNING_COLOR],
+        colors=ROOM_TYPE_COLOR_SEQUENCE,
         chart_id="room_type_share",
         slide_hint="EDA Part 1",
         value_formatter=lambda value: f"{value:.1f}%",
@@ -395,9 +405,9 @@ def _render_nightly_price_histogram(data: pd.Series, destination: Path) -> Chart
         x = left + _linear_scale(tick, 0, max_price, 0, plot_width)
         body_parts.append(_svg_text(x, top + plot_height + 24, _format_currency(tick)))
 
-    body_parts.append(_svg_line(left, top, left, top + plot_height, stroke=TEXT_COLOR, stroke_width=1.5))
+    body_parts.append(_svg_line(left, top, left, top + plot_height, stroke=BORDER_COLOR, stroke_width=1.5))
     body_parts.append(
-        _svg_line(left, top + plot_height, left + plot_width, top + plot_height, stroke=TEXT_COLOR, stroke_width=1.5)
+        _svg_line(left, top + plot_height, left + plot_width, top + plot_height, stroke=BORDER_COLOR, stroke_width=1.5)
     )
 
     bin_width = plot_width / max(len(counts), 1)
@@ -449,7 +459,7 @@ def _render_nightly_price_boxplot(data: pd.Series, destination: Path) -> ChartAr
         body_parts.append(_svg_text(x, top + plot_height + 24, _format_currency(tick)))
 
     body_parts.append(
-        _svg_line(left, top + plot_height, left + plot_width, top + plot_height, stroke=TEXT_COLOR, stroke_width=1.5)
+        _svg_line(left, top + plot_height, left + plot_width, top + plot_height, stroke=BORDER_COLOR, stroke_width=1.5)
     )
 
     q1_x = left + _linear_scale(float(q1), 0, max_price, 0, plot_width)
@@ -462,7 +472,9 @@ def _render_nightly_price_boxplot(data: pd.Series, destination: Path) -> ChartAr
     body_parts.append(_svg_line(q3_x, center_y, upper_x, center_y, stroke=PRIMARY_COLOR, stroke_width=2))
     body_parts.append(_svg_line(lower_x, center_y - 14, lower_x, center_y + 14, stroke=PRIMARY_COLOR, stroke_width=2))
     body_parts.append(_svg_line(upper_x, center_y - 14, upper_x, center_y + 14, stroke=PRIMARY_COLOR, stroke_width=2))
-    body_parts.append(_svg_rect(q1_x, center_y - box_height / 2, q3_x - q1_x, box_height, fill=SECONDARY_COLOR, stroke=PRIMARY_COLOR))
+    body_parts.append(
+        _svg_rect(q1_x, center_y - box_height / 2, q3_x - q1_x, box_height, fill=COLORS.teal_light, stroke=PRIMARY_COLOR)
+    )
     body_parts.append(_svg_line(median_x, center_y - box_height / 2, median_x, center_y + box_height / 2, stroke=WARNING_COLOR, stroke_width=3))
     body_parts.append(_svg_text(q1_x, center_y - 34, "Q1", css_class="value"))
     body_parts.append(_svg_text(median_x, center_y - 34, "Median", css_class="value"))
@@ -484,7 +496,7 @@ def _render_median_price_by_city_chart(data: pd.Series, destination: Path) -> Ch
         title="Median Nightly Price by City",
         y_axis_label="Median nightly price",
         destination=destination,
-        fill=SECONDARY_COLOR,
+        fill=PRIMARY_COLOR,
         chart_id="median_price_by_city",
         slide_hint="EDA Part 3",
         value_formatter=_format_currency,
@@ -557,7 +569,7 @@ def _render_median_price_by_room_type_chart(data: pd.Series, destination: Path) 
         title="Median Nightly Price by Room Type",
         y_axis_label="Median nightly price",
         destination=destination,
-        fill=ACCENT_COLOR,
+        fill=ROOM_TYPE_COLOR_SEQUENCE,
         chart_id="median_price_by_room_type",
         slide_hint="EDA Part 4",
         value_formatter=_format_currency,

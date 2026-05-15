@@ -9,7 +9,7 @@ import pandas as pd
 import yaml
 
 
-IMPOSSIBLE_PRICE_THRESHOLD = 10_000.0
+MAX_MODELING_NIGHTLY_PRICE = 1_500.0
 
 
 @dataclass(frozen=True)
@@ -58,7 +58,7 @@ def build_model_input_table(
     dataframe["season_peak_flag"] = dataframe["period_label"].isin(["Early Summer", "Early Autumn"])
     dataframe["season_shoulder_flag"] = dataframe["period_label"].isin(["Early Spring", "Early Winter"])
     pre_filter_row_count = len(dataframe)
-    dataframe = dataframe[dataframe["nightly_price"] <= IMPOSSIBLE_PRICE_THRESHOLD].copy()
+    dataframe = dataframe[dataframe["nightly_price"] <= MAX_MODELING_NIGHTLY_PRICE].copy()
     dataframe = dataframe.drop(columns=["reference_neighbourhood_group_name"])
     dataframe = dataframe.sort_values(["listing_id", "snapshot_date"], kind="stable").reset_index(drop=True)
 
@@ -66,8 +66,8 @@ def build_model_input_table(
         "target_column": "nightly_price",
         "group_column": "listing_id",
         "row_count": int(len(dataframe)),
-        "rows_removed_for_impossible_price_outliers": int(pre_filter_row_count - len(dataframe)),
-        "impossible_price_threshold": IMPOSSIBLE_PRICE_THRESHOLD,
+        "rows_removed_for_high_price_outliers": int(pre_filter_row_count - len(dataframe)),
+        "max_modeling_nightly_price": MAX_MODELING_NIGHTLY_PRICE,
         "excluded_training_columns": [
             "city_period_summary.*nightly_price*",
             "neighbourhood_period_summary.*nightly_price*",

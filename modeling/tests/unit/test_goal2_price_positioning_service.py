@@ -1,6 +1,10 @@
 import pandas as pd
 
-from benchmarking.price_positioning_service import build_price_decision_payload
+from benchmarking.price_positioning_service import (
+    build_model_estimate_interval,
+    build_price_decision_payload,
+    classify_model_benchmark_agreement,
+)
 from explainability.local_explanation_builder import build_linear_explanation_context
 from feature_engineering.feature_registry import model_feature_columns
 from price_estimation.model_registry import build_linear_pipeline
@@ -139,6 +143,12 @@ def test_build_price_decision_payload_is_benchmark_led() -> None:
         linear_explanation_context=explanation_context,
         neighbourhood_period_summary=neighbourhood_period_summary,
         city_period_summary=city_period_summary,
+        model_estimate_interval_calibration={
+            "source": "heldout_residual_quantiles",
+            "confidence_level": 0.8,
+            "lower_residual_quantile": -10.0,
+            "upper_residual_quantile": 15.0,
+        },
     )
 
     assert payload["primary_decision_signal"] == "benchmark_range"
@@ -146,3 +156,46 @@ def test_build_price_decision_payload_is_benchmark_led() -> None:
     assert payload["model_estimate_role"] == "supporting_signal"
     assert "primary decision signal" in payload["decision_signal_summary"]
     assert payload["estimated_market_price"] == 145.0
+    assert payload["model_estimate_lower_bound"] == 135.0
+    assert payload["model_estimate_upper_bound"] == 160.0
+    assert payload["model_estimate_interval_confidence_level"] == 0.8
+    assert payload["model_estimate_interval_source"] == "heldout_residual_quantiles"
+    assert payload["model_benchmark_agreement_label"] == "strong"
+    assert payload["model_benchmark_gap_amount"] == 0.0
+    assert payload["model_benchmark_gap_ratio"] == 0.0
+    assert "inside the benchmark range" in payload["model_benchmark_agreement_summary"]
+
+
+def test_classify_model_benchmark_agreement_marks_near_outside_estimate_as_medium() -> None:
+    agreement = classify_model_benchmark_agreement(
+        estimated_market_price=121.0,
+        benchmark_lower_bound=100.0,
+        benchmark_upper_bound=120.0,
+    )
+
+    assert agreement["model_benchmark_agreement_label"] == "medium"
+    assert agreement["model_benchmark_gap_amount"] == 1.0
+    assert agreement["model_benchmark_gap_ratio"] == 0.05
+    assert "close to the benchmark range" in agreement["model_benchmark_agreement_summary"]
+
+
+def test_classify_model_benchmark_agreement_marks_far_outside_estimate_as_weak() -> None:
+    agreement = classify_model_benchmark_agreement(
+        estimated_market_price=75.0,
+        benchmark_lower_bound=100.0,
+        benchmark_upper_bound=120.0,
+    )
+
+    assert agreement["model_benchmark_agreement_label"] == "weak"
+    assert agreement["model_benchmark_gap_amount"] == 25.0
+    assert agreement["model_benchmark_gap_ratio"] == 1.25
+    assert "far from the benchmark range" in agreement["model_benchmark_agreement_summary"]
+
+
+def test_build_model_estimate_interval_falls_back_to_point_estimate_without_calibration() -> None:
+    interval = build_model_estimate_interval(estimated_market_price=125.0, calibration=None)
+
+    assert interval["model_estimate_lower_bound"] == 125.0
+    assert interval["model_estimate_upper_bound"] == 125.0
+    assert interval["model_estimate_interval_confidence_level"] is None
+    assert interval["model_estimate_interval_source"] == "unavailable"

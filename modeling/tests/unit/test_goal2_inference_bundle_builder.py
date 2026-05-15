@@ -49,12 +49,20 @@ def test_build_inference_bundle_serializes_and_loads_models(tmp_path: Path) -> N
     feature_frame = pd.DataFrame(rows)
     training_result = train_models_from_feature_frame(
         feature_frame,
-        config=Goal2TrainingConfig(tree_max_iter=50),
+        config=Goal2TrainingConfig(
+            tree_max_iter=50,
+            catboost_iterations=25,
+            catboost_rich_categorical_experiments_enabled=True,
+        ),
     )
 
     paths = build_inference_bundle(training_result, tmp_path, bundle_version="test_bundle")
     bundle = load_inference_bundle(paths["bundle"])
 
     assert paths["bundle"].exists()
-    assert bundle["champion_model_name"] in {"linear_baseline", "tree_challenger"}
+    assert bundle["champion_model_name"] in {"linear_baseline", "tree_challenger", "catboost_challenger"}
+    assert "catboost_challenger" in bundle["available_model_names"]
     assert len(bundle["feature_columns"]) > 0
+    assert "neighbourhood_name" in bundle["feature_columns_by_model"]["catboost_challenger"]
+    assert bundle["model_estimate_interval_calibration"]["source"] == "heldout_residual_quantiles"
+    assert bundle["model_estimate_interval_calibration"]["confidence_level"] == 0.8

@@ -49,10 +49,42 @@ fields:
   data_type: float
   nullable: false
   description: Point estimate returned by the selected model bundle, retained as a supporting signal rather than the primary decision basis.
+- name: model_estimate_lower_bound
+  data_type: float
+  nullable: false
+  description: Lower bound of the supporting model estimate interval.
+- name: model_estimate_upper_bound
+  data_type: float
+  nullable: false
+  description: Upper bound of the supporting model estimate interval.
+- name: model_estimate_interval_confidence_level
+  data_type: float
+  nullable: true
+  description: Nominal confidence level used to calibrate the model estimate interval. Null when interval calibration is unavailable.
+- name: model_estimate_interval_source
+  data_type: string
+  nullable: false
+  description: Calibration source for the model estimate interval.
 - name: model_estimate_role
   data_type: string
   nullable: false
   description: Declares the role of the model estimate in the decision payload. Goal 2 uses supporting_signal.
+- name: model_benchmark_agreement_label
+  data_type: string
+  nullable: false
+  description: Classifies whether the supporting model estimate agrees with the benchmark range. Allowed values are strong, medium, and weak.
+- name: model_benchmark_gap_amount
+  data_type: float
+  nullable: false
+  description: Absolute distance between the model estimate and the nearest benchmark bound. It is 0 when the estimate falls inside the benchmark range.
+- name: model_benchmark_gap_ratio
+  data_type: float
+  nullable: false
+  description: Gap amount divided by benchmark range width. It is 0 when the estimate falls inside the benchmark range.
+- name: model_benchmark_agreement_summary
+  data_type: string
+  nullable: false
+  description: Human-readable explanation of how the model estimate relates to the benchmark range.
 - name: champion_model_name
   data_type: string
   nullable: false

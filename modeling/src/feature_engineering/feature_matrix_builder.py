@@ -60,6 +60,7 @@ def build_feature_matrix_artifact_versioned(
         "group_column": GROUP_COLUMN,
         "feature_columns": model_feature_columns(),
         "row_count": int(len(feature_frame)),
+        "max_modeling_nightly_price": model_input_artifact.metadata["max_modeling_nightly_price"],
     }
     with metadata_path.open("w", encoding="utf-8") as handle:
         yaml.safe_dump(metadata, handle, sort_keys=False, allow_unicode=True)

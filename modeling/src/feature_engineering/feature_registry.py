@@ -45,8 +45,23 @@ CATEGORICAL_MODEL_FEATURES = [
     "venezia_group_name",
 ]
 
+RICH_CATBOOST_CATEGORICAL_FEATURES = [
+    "city_name",
+    "period_label",
+    "neighbourhood_name",
+]
+
 
 def model_feature_columns() -> list[str]:
     """Return the ordered raw feature columns used by Goal 2 models."""
 
     return [*NUMERIC_MODEL_FEATURES, *CATEGORICAL_MODEL_FEATURES]
+
+
+def catboost_feature_columns(*, include_local_market_categoricals: bool = False) -> list[str]:
+    """Return CatBoost feature columns, optionally including local-market categories."""
+
+    categorical_features = list(CATEGORICAL_MODEL_FEATURES)
+    if include_local_market_categoricals:
+        categorical_features.extend(RICH_CATBOOST_CATEGORICAL_FEATURES)
+    return [*NUMERIC_MODEL_FEATURES, *categorical_features]

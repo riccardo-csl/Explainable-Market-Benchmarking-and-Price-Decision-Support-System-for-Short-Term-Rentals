@@ -1,0 +1,319 @@
+bundle_version: goal2_v10_diagnostics
+champion_model_name: catboost_challenger
+fallback_model_name: linear_baseline
+available_model_names:
+- linear_baseline
+- tree_challenger
+- catboost_challenger
+training_date: '2026-04-30'
+feature_columns: &id002
+- accommodates_count
+- beds_count
+- bedrooms_count
+- bathrooms_count
+- host_listing_count
+- total_reviews
+- reviews_last_twelve_months
+- reviews_per_month
+- rating_score
+- accuracy_score
+- cleanliness_score
+- checkin_score
+- communication_score
+- location_score
+- value_score
+- latitude
+- longitude
+- host_tenure_days
+- distance_to_city_center_km
+- distance_to_neighbourhood_center_km
+- room_type
+- bathroom_type
+- is_superhost
+- season_peak_flag
+- season_shoulder_flag
+- venezia_group_name
+- city_name
+- period_label
+- neighbourhood_name
+feature_columns_by_model:
+  linear_baseline: &id001
+  - accommodates_count
+  - beds_count
+  - bedrooms_count
+  - bathrooms_count
+  - host_listing_count
+  - total_reviews
+  - reviews_last_twelve_months
+  - reviews_per_month
+  - rating_score
+  - accuracy_score
+  - cleanliness_score
+  - checkin_score
+  - communication_score
+  - location_score
+  - value_score
+  - latitude
+  - longitude
+  - host_tenure_days
+  - distance_to_city_center_km
+  - distance_to_neighbourhood_center_km
+  - room_type
+  - bathroom_type
+  - is_superhost
+  - season_peak_flag
+  - season_shoulder_flag
+  - venezia_group_name
+  tree_challenger: *id001
+  catboost_challenger: *id002
+target_column: nightly_price
+group_column: listing_id
+model_estimate_interval_calibration: &id003
+  source: heldout_residual_quantiles
+  confidence_level: 0.8
+  lower_residual_quantile: -62.99730553994961
+  upper_residual_quantile: 58.26724119771078
+  empirical_coverage_rate: 0.8
+model_estimate_interval_calibration_by_model:
+  linear_baseline:
+    source: heldout_residual_quantiles
+    confidence_level: 0.8
+    lower_residual_quantile: -78.65722486553523
+    upper_residual_quantile: 78.82490169119416
+    empirical_coverage_rate: 0.8
+  tree_challenger:
+    source: heldout_residual_quantiles
+    confidence_level: 0.8
+    lower_residual_quantile: -65.1675995939294
+    upper_residual_quantile: 59.842578404287075
+    empirical_coverage_rate: 0.8
+  catboost_challenger: *id003
+metrics:
+  linear_baseline:
+    model_name: linear_baseline
+    mae: 60.13330368263341
+    rmse: 110.62659438782377
+    per_city_mae:
+      Firenze: 69.28462433589414
+      Milano: 60.69267683346262
+      Napoli: 47.039134344562484
+      Roma: 58.2990326752189
+      Venezia: 67.11547703692648
+    per_period_mae:
+      Early Autumn: 64.8395920014051
+      Early Spring: 55.52027369836683
+      Early Summer: 64.13586189065475
+      Early Winter: 55.59960566161083
+    per_room_type_mae:
+      Entire home: 63.60349684336826
+      Hotel room: 45.29179880570497
+      Private room: 46.64618834728401
+      Shared room: 60.218348775773165
+    price_band_mae:
+      lower: 45.32474371148449
+      middle: 38.5351410849976
+      upper: 96.59243274625035
+    mape: 44.00327372988674
+    benchmark_positioning_mae:
+      aligned: 38.179315458939044
+      overpriced: 107.31386858341588
+      underpriced: 67.64869963210478
+    model_prediction_inside_benchmark_rate: 0.508
+    model_positioning_agreement_rate: 0.512
+    metadata:
+      prediction_interval:
+        source: heldout_residual_quantiles
+        confidence_level: 0.8
+        lower_residual_quantile: -78.65722486553523
+        upper_residual_quantile: 78.82490169119416
+        empirical_coverage_rate: 0.8
+  tree_challenger:
+    model_name: tree_challenger
+    mae: 49.06542971888938
+    rmse: 96.7058798120516
+    per_city_mae:
+      Firenze: 63.18843536265026
+      Milano: 50.05156220700703
+      Napoli: 32.87879047064955
+      Roma: 46.453845219612155
+      Venezia: 53.98156993974906
+    per_period_mae:
+      Early Autumn: 51.5787979684174
+      Early Spring: 45.837479850654184
+      Early Summer: 50.61917164183086
+      Early Winter: 47.96432832519661
+    per_room_type_mae:
+      Entire home: 52.23227501234356
+      Hotel room: 37.35155855563593
+      Private room: 36.80635176376167
+      Shared room: 42.283945385446
+    price_band_mae:
+      lower: 31.9823930260054
+      middle: 30.132890178854563
+      upper: 85.19548839643582
+    mape: 34.0563268194571
+    benchmark_positioning_mae:
+      aligned: 31.432743998816928
+      overpriced: 83.55487272413416
+      underpriced: 53.10279682699582
+    model_prediction_inside_benchmark_rate: 0.628
+    model_positioning_agreement_rate: 0.6
+    metadata:
+      prediction_interval:
+        source: heldout_residual_quantiles
+        confidence_level: 0.8
+        lower_residual_quantile: -65.1675995939294
+        upper_residual_quantile: 59.842578404287075
+        empirical_coverage_rate: 0.8
+  catboost_challenger:
+    model_name: catboost_challenger
+    mae: 47.76862965349323
+    rmse: 94.06396695234596
+    per_city_mae:
+      Firenze: 61.13754794216976
+      Milano: 48.48700969045315
+      Napoli: 31.559529932900716
+      Roma: 45.80101271896758
+      Venezia: 52.19283141722318
+    per_period_mae:
+      Early Autumn: 51.22368785910547
+      Early Spring: 45.01138637289373
+      Early Summer: 48.872405311086126
+      Early Winter: 45.71916071692134
+    per_room_type_mae:
+      Entire home: 50.88914111287141
+      Hotel room: 34.75386820969818
+      Private room: 35.799708159701574
+      Shared room: 39.73593498263239
+    price_band_mae:
+      lower: 30.266624854997424
+      middle: 29.79238908678839
+      upper: 83.37699366030897
+    mape: 32.89777975955046
+    benchmark_positioning_mae:
+      aligned: 29.351004177235108
+      overpriced: 77.97964072848592
+      underpriced: 52.30661330068673
+    model_prediction_inside_benchmark_rate: 0.592
+    model_positioning_agreement_rate: 0.62
+    metadata:
+      tuning:
+        strategy: validation_mae_grid_search
+        selection_metric: validation_mae
+        candidate_count: 6
+        feature_columns:
+        - accommodates_count
+        - beds_count
+        - bedrooms_count
+        - bathrooms_count
+        - host_listing_count
+        - total_reviews
+        - reviews_last_twelve_months
+        - reviews_per_month
+        - rating_score
+        - accuracy_score
+        - cleanliness_score
+        - checkin_score
+        - communication_score
+        - location_score
+        - value_score
+        - latitude
+        - longitude
+        - host_tenure_days
+        - distance_to_city_center_km
+        - distance_to_neighbourhood_center_km
+        - room_type
+        - bathroom_type
+        - is_superhost
+        - season_peak_flag
+        - season_shoulder_flag
+        - venezia_group_name
+        - city_name
+        - period_label
+        - neighbourhood_name
+        rich_categorical_features_enabled: true
+        best_params:
+          iterations: 600
+          learning_rate: 0.05
+          depth: 8
+          l2_leaf_reg: 5.0
+          bagging_temperature: 0.5
+          random_strength: 1.0
+          loss_function: RMSE
+          eval_metric: null
+          target_transform: raw
+        best_validation_mae: 48.141488389866964
+        best_validation_rmse: 95.55136790966911
+        validation_results:
+        - iterations: 300
+          learning_rate: 0.05
+          depth: 6
+          l2_leaf_reg: 3.0
+          bagging_temperature: 0.0
+          random_strength: 1.0
+          loss_function: RMSE
+          eval_metric: null
+          target_transform: raw
+          validation_mae: 49.81440051459278
+          validation_rmse: 99.11438832742449
+        - iterations: 600
+          learning_rate: 0.03
+          depth: 6
+          l2_leaf_reg: 3.0
+          bagging_temperature: 0.0
+          random_strength: 1.0
+          loss_function: RMSE
+          eval_metric: null
+          target_transform: raw
+          validation_mae: 49.47558594981608
+          validation_rmse: 98.63408786066191
+        - iterations: 600
+          learning_rate: 0.05
+          depth: 6
+          l2_leaf_reg: 5.0
+          bagging_temperature: 0.5
+          random_strength: 1.0
+          loss_function: RMSE
+          eval_metric: null
+          target_transform: raw
+          validation_mae: 48.86987937157984
+          validation_rmse: 97.31646612922148
+        - iterations: 600
+          learning_rate: 0.05
+          depth: 8
+          l2_leaf_reg: 5.0
+          bagging_temperature: 0.5
+          random_strength: 1.0
+          loss_function: RMSE
+          eval_metric: null
+          target_transform: raw
+          validation_mae: 48.141488389866964
+          validation_rmse: 95.55136790966911
+        - iterations: 1000
+          learning_rate: 0.03
+          depth: 6
+          l2_leaf_reg: 10.0
+          bagging_temperature: 1.0
+          random_strength: 2.0
+          loss_function: RMSE
+          eval_metric: null
+          target_transform: raw
+          validation_mae: 48.94810225433576
+          validation_rmse: 97.57764192655982
+        - iterations: 300
+          learning_rate: 0.08
+          depth: 4
+          l2_leaf_reg: 3.0
+          bagging_temperature: 0.5
+          random_strength: 0.5
+          loss_function: RMSE
+          eval_metric: null
+          target_transform: raw
+          validation_mae: 50.221244785574086
+          validation_rmse: 99.74073762387042
+      prediction_interval:
+        source: heldout_residual_quantiles
+        confidence_level: 0.8
+        lower_residual_quantile: -62.99730553994961
+        upper_residual_quantile: 58.26724119771078
+        empirical_coverage_rate: 0.8

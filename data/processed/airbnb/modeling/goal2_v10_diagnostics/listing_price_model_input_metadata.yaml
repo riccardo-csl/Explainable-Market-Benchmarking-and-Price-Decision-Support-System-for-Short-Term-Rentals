@@ -1,0 +1,17 @@
+target_column: nightly_price
+group_column: listing_id
+row_count: 281105
+rows_removed_for_high_price_outliers: 942
+max_modeling_nightly_price: 1500.0
+excluded_training_columns:
+- city_period_summary.*nightly_price*
+- neighbourhood_period_summary.*nightly_price*
+- neighbourhood_name
+- snapshot_date
+- host_since
+joins:
+  neighbourhood_reference:
+    join_columns:
+    - city_name
+    - neighbourhood_name
+    null_rate_after_join: 0.8984827733409224

@@ -59,7 +59,7 @@ def test_build_model_input_table_adds_goal2_fields_and_metadata() -> None:
     assert "neighbourhood_name" in artifact.metadata["excluded_training_columns"]
 
 
-def test_build_model_input_table_filters_impossible_price_outliers() -> None:
+def test_build_model_input_table_filters_high_price_outliers() -> None:
     listing_snapshot = pd.DataFrame(
         [
             {
@@ -100,7 +100,7 @@ def test_build_model_input_table_filters_impossible_price_outliers() -> None:
                 "neighbourhood_name": "Centro",
                 "room_type": "Entire home",
                 "bathroom_type": "Private bath",
-                "nightly_price": 50000.0,
+                "nightly_price": 1501.0,
                 "accommodates_count": 4,
                 "beds_count": 2,
                 "bedrooms_count": 1,
@@ -136,5 +136,5 @@ def test_build_model_input_table_filters_impossible_price_outliers() -> None:
 
     assert len(artifact.dataframe) == 1
     assert artifact.dataframe.iloc[0]["listing_id"] == 10
-    assert artifact.metadata["rows_removed_for_impossible_price_outliers"] == 1
-    assert artifact.metadata["impossible_price_threshold"] == 10000.0
+    assert artifact.metadata["rows_removed_for_high_price_outliers"] == 1
+    assert artifact.metadata["max_modeling_nightly_price"] == 1500.0
